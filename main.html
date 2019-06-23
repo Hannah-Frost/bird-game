@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="./Players.js"></script>
+    <script src="./Bird.js"></script>
     <link href="/style.css" rel="stylesheet" type="text/css" />
-    <title>Birds</title>
+    <title>Selection</title>
   </head>
   <body class="background-image">
-      <canvas id="canvas">
-          Sorry. Your browser does not support HTML5 canvas element.
-      </canvas>
-      <button type="button" onclick="getResolution();">Get Resolution</button>
-      <div class="start-button">
-        <button id="start">Start Game</button>
-      </div>
+    <span id="bird1-location">test</span>
+    <div class="start-button">
+      <button id="start">Start Game</button>
+    </div>
+    <img src="leftGroundBird.png" alt="Bird 1">
   </body>
 </html>
 
@@ -25,37 +25,29 @@
 </style>
 
 <script>
-  // document.body.style.background = "url('background.png')";
-  window.onload = function () {
-    var img = new Image();
-        img.src = 'groundedBird.png';
-
-        // WAIT TILL IMAGE IS LOADED.
-        img.onload = function () {
-            fill_canvas(img);       // FILL THE CANVAS WITH THE IMAGE.
-        }
-
-    function fill_canvas(img) {
-          // CREATE CANVAS CONTEXT.
-          var canvas = document.getElementById('canvas');
-          var ctx = canvas.getContext('2d');
-
-          canvas.width = img.width;
-          canvas.height = img.height;
-
-          ctx.drawImage(img, 0, 0);       // DRAW THE IMAGE TO THE CANVAS.
-      }
-  }
-
-  function show_res() {
-    alert("Your screen resolution is: " + screen.width + "x" + screen.height);
-  }
-  
   $(document).ready(function() {
-    // $(window).keydown(function(a){
-    //   key = e.which - 65; //makes a-z = 1-27
-    //   key = letters[key];
-    //   $('img[src="' + key + '.jpg"]').show();
-    // }
+    var bird1 = new Bird("blue");
+    $('#bird1-location').text(bird1.x);
+  });
+
+  $(document).keypress(function(event){
+    var key = (event.keyCode ? event.keyCode : event.which);
+    var ch=String.fromCharCode(key)
+    switch (ch) {
+      case 'a':
+        alert("IT WAS LEFT")
+        break;
+      case 's':
+        alert('IT WAS DOWN')
+        break;
+      case 'd':
+         alert('IT WAS RIGHT');
+        break;
+      case 'w':
+         alert('IT WAS A JUMP');
+        break;
+      case ' ':
+        alert('IT WAS A JUMP');
+    }
   });
 </script>
