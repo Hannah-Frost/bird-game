@@ -9,7 +9,9 @@
     <title>Bird Game</title>
   </head>
   <body class="background-image">
-    <img id="bird1-img" src="leftGroundBird.png" alt="Bird 1"/>
+    <div id="bird1-img">
+      <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
+    </div>
     <span id="bird1-x">test</span>
   </body>
 </html>
@@ -38,6 +40,7 @@
           bird1.moveLeft();
           $('#bird1-x').text(bird1.x);
           { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
+          $('#bird1').attr("src", "leftGroundBird.png");
           break;
         case 's':
           alert('IT WAS DOWN')
@@ -46,6 +49,7 @@
            bird1.moveRight();
            $('#bird1-x').text(bird1.x);
            { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
+           $('#bird1').attr("src", "rightGroundBird.png");
           break;
         case 'w':
            alert('IT WAS A JUMP');
