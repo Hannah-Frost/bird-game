@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="./Players.js"></script>
+    <script src="./Bird.js"></script>
+    <link href="/style.css" rel="stylesheet" type="text/css" />
+    <title>Bird Game</title>
+  </head>
+  <body class="background-image">
+    <img id="bird1-img" src="leftGroundBird.png" alt="Bird 1"/>
+    <span id="bird1-x">test</span>
+  </body>
+</html>
+
+<style>
+  .background-image {
+    background-image: url("background.png");
+	  background-size: cover;
+  }
+  #bird1-img {
+    position: absolute;
+    left: 50px;
+  }
+</style>
+
+<script>
+  $(document).ready(function() {
+    var bird1 = new Bird("blue");
+    $('#bird1-x').text(bird1.x);
+
+    $(document).keypress(function(event){
+      var key = (event.keyCode ? event.keyCode : event.which);
+      var ch=String.fromCharCode(key)
+      switch (ch.toLowerCase()) {
+        case 'a':
+          bird1.moveLeft();
+          $('#bird1-x').text(bird1.x);
+          { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
+          break;
+        case 's':
+          alert('IT WAS DOWN')
+          break;
+        case 'd':
+           bird1.moveRight();
+           $('#bird1-x').text(bird1.x);
+           { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
+          break;
+        case 'w':
+           alert('IT WAS A JUMP');
+          break;
+        case ' ':
+          alert('IT WAS A JUMP');
+      }
+    });
+  });
+</script>

@@ -17,9 +17,9 @@ Bird.prototype.showColour = function() {
 };
 
 Bird.prototype.moveLeft = function() {
-  this.x -= 5
+  this.x -= 20
 };
 
 Bird.prototype.moveRight = function() {
-  this.x += 5
+  this.x += 20
 };
