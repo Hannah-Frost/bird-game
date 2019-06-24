@@ -12,6 +12,7 @@
     <div id="bird1-img">
       <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
     </div>
+    <img id="cloud1" src="cloudPlatform.png" alt="Cloud Platform"/>
   </body>
 </html>
 
@@ -22,8 +23,13 @@
   }
   #bird1-img {
     position: absolute;
-    left: 100px;
+    left: 500px;
     top: 100px;
+  }
+  #cloud1 {
+    position: absolute;
+    left: 400px;
+    top: 155px;
   }
 </style>
 
@@ -32,20 +38,34 @@
     var bird1 = new Bird("blue");
     var jumping = false
     var right = false;
-    $('#bird1-x').text(bird1.x);
+
+    window.setInterval(platformCollision, 300);
 
     function jump() {
       if (!jumping) {
         jumping = true;
-        setTimeout(land, 500);
+        bird1.jump();
+        setTimeout(land, 1000);
         direction()
       }
     }
+
     function land() {
       jumping = false;
-      bird1.land()
+      bird1.fall()
       { document.getElementById('bird1-img').style.top = bird1.y + 'px'};
       direction()
+    }
+
+    function platformCollision() {
+      if (bird1.x > 350 && bird1.x < 950 && bird1.y === 100) {
+        console.log("ON CLOUD");
+      } else if (!jumping) {
+        if (bird1.y > 0) {
+          bird1.fall();
+          { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
+        }
+      }
     }
 
     function direction() {
@@ -70,9 +90,9 @@
           right = false;
           direction()
           break;
-        case 's':
-          alert('IT WAS DOWN')
-          break;
+        // case 's':
+        //   alert('IT WAS DOWN')
+        //   break;
         case 'd':
            bird1.moveRight();
            { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
@@ -80,16 +100,18 @@
            direction()
           break;
         case 'w':
-          $('#bird1').attr("src", "rightJumpBird.png");
-          bird1.jump();
-          jump();
-          { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
+          if (!jumping) {
+            $('#bird1').attr("src", "rightJumpBird.png");
+            jump();
+            { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
+          }
           break;
         case ' ':
-          $('#bird1').attr("src", "rightJumpBird.png");
-          bird1.jump();
-          jump();
-          { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
+          if (!jumping) {
+            $('#bird1').attr("src", "rightJumpBird.png");
+            jump();
+            { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
+          }
       }
     });
   });

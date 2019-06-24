@@ -4,7 +4,8 @@ function Bird(colour) {
   this.leftJumpImage = "leftJumpBird.png";
   this.rightJumpImage = "rightJumpBird.png";
   this.colour = colour;
-  this.x = 100;
+  this.accessories = [];
+  this.x = 500;
   this.y = 100;
 }
 
@@ -21,9 +22,13 @@ Bird.prototype.moveRight = function() {
 };
 
 Bird.prototype.jump = function() {
-  this.y -= 40
+  this.y -= 60
 };
 
-Bird.prototype.land = function() {
-  this.y += 40
+Bird.prototype.fall = function() {
+  this.y += 60
 };
+
+Bird.prototype.addAccessory = function(accessory) {
+  this.accessories.push(accessory)
+}
