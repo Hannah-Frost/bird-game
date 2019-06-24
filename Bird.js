@@ -6,10 +6,6 @@ function Bird(colour) {
   this.colour = colour;
   this.x = 100;
   this.y = 100;
-  this.speed = 5;
-  this.update = function() {
-
-  }
 }
 
 Bird.prototype.showColour = function() {
@@ -22,4 +18,12 @@ Bird.prototype.moveLeft = function() {
 
 Bird.prototype.moveRight = function() {
   this.x += 20
+};
+
+Bird.prototype.jump = function() {
+  this.y -= 40
+};
+
+Bird.prototype.land = function() {
+  this.y += 40
 };

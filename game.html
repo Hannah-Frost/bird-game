@@ -12,7 +12,6 @@
     <div id="bird1-img">
       <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
     </div>
-    <span id="bird1-x">test</span>
   </body>
 </html>
 
@@ -23,14 +22,43 @@
   }
   #bird1-img {
     position: absolute;
-    left: 50px;
+    left: 100px;
+    top: 100px;
   }
 </style>
 
 <script>
   $(document).ready(function() {
     var bird1 = new Bird("blue");
+    var jumping = false
+    var right = false;
     $('#bird1-x').text(bird1.x);
+
+    function jump() {
+      if (!jumping) {
+        jumping = true;
+        setTimeout(land, 500);
+        direction()
+      }
+    }
+    function land() {
+      jumping = false;
+      bird1.land()
+      { document.getElementById('bird1-img').style.top = bird1.y + 'px'};
+      direction()
+    }
+
+    function direction() {
+      if (right && jumping) {
+        $('#bird1').attr("src", "rightJumpBird.png");
+      } else if (right) {
+        $('#bird1').attr("src", "rightGroundBird.png");
+      } else if (!right && jumping) {
+        $('#bird1').attr("src", "leftJumpBird.png");
+      } else if (!right) {
+        $('#bird1').attr("src", "leftGroundBird.png");
+      }
+    }
 
     $(document).keypress(function(event){
       var key = (event.keyCode ? event.keyCode : event.which);
@@ -38,24 +66,30 @@
       switch (ch.toLowerCase()) {
         case 'a':
           bird1.moveLeft();
-          $('#bird1-x').text(bird1.x);
           { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
-          $('#bird1').attr("src", "leftGroundBird.png");
+          right = false;
+          direction()
           break;
         case 's':
           alert('IT WAS DOWN')
           break;
         case 'd':
            bird1.moveRight();
-           $('#bird1-x').text(bird1.x);
            { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
-           $('#bird1').attr("src", "rightGroundBird.png");
+           right = true;
+           direction()
           break;
         case 'w':
-           alert('IT WAS A JUMP');
+          $('#bird1').attr("src", "rightJumpBird.png");
+          bird1.jump();
+          jump();
+          { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
           break;
         case ' ':
-          alert('IT WAS A JUMP');
+          $('#bird1').attr("src", "rightJumpBird.png");
+          bird1.jump();
+          jump();
+          { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
       }
     });
   });
