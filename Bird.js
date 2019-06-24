@@ -7,6 +7,7 @@ function Bird(colour) {
   this.accessories = [];
   this.x = 500;
   this.y = 100;
+  this.fallCount = 0;
 }
 
 Bird.prototype.showColour = function() {
@@ -28,6 +29,11 @@ Bird.prototype.jump = function() {
 Bird.prototype.fall = function() {
   this.y += 60
 };
+
+Bird.prototype.respawn = function() {
+  this.x = 500;
+  this.y = 100;
+}
 
 Bird.prototype.addAccessory = function(accessory) {
   this.accessories.push(accessory)

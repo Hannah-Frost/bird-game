@@ -45,7 +45,7 @@
       if (!jumping) {
         jumping = true;
         bird1.jump();
-        setTimeout(land, 1000);
+        setTimeout(land, 900);
         direction()
       }
     }
@@ -61,9 +61,13 @@
       if (bird1.x > 350 && bird1.x < 950 && bird1.y === 100) {
         console.log("ON CLOUD");
       } else if (!jumping) {
-        if (bird1.y > 0) {
+        if (bird1.y < 800) {
           bird1.fall();
           { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
+        } else {
+          bird1.respawn();
+          { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
+          { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
         }
       }
     }
@@ -90,9 +94,6 @@
           right = false;
           direction()
           break;
-        // case 's':
-        //   alert('IT WAS DOWN')
-        //   break;
         case 'd':
            bird1.moveRight();
            { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
