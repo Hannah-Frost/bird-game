@@ -4,10 +4,10 @@ function Bird(colour) {
   this.leftJumpImage = "leftJumpBird.png";
   this.rightJumpImage = "rightJumpBird.png";
   this.colour = colour;
-  this.accessories = [];
   this.x = 500;
   this.y = 100;
   this.fallCount = 0;
+  this.gameOver = false;
   this.accessories = [];
 }
 
@@ -44,6 +44,6 @@ Bird.prototype.addAccessory = function(accessory) {
   this.accessories.push(accessory);
 }
 
-Bird.prototype.showAccessories = function(accessory) {
-  return this.accessories;
+Bird.prototype.gameIsOver = function() {
+  this.gameOver = true;
 }

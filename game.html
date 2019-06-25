@@ -12,13 +12,17 @@
   <body class="background-image">
     <h1>Player 1</h1>
     <h1>Falls: <span id="bird1-fall-count">0</span></h1>
-    <h1>Accessories: <span id="accessory1"><span><span id="accessory2"><span></h1>
+    <h1>Accessories: <span id="accessory1"><span></h1>
+    <h1><span id="accessory2"><span></h1>
     <div id="bird1-img">
       <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
     </div>
     <img id="cloud1" src="cloudPlatform.png" alt="Cloud Platform"/>
     <div>
       <span id="saucepan"><span>
+    </div>
+    <div>
+      <span id="bowtie"><span>
     </div>
   </body>
 </html>
@@ -43,12 +47,18 @@
     left: 700px;
     top: 135px;
   }
+  #bowtie {
+    position: absolute;
+    left: 880px;
+    top: 155px;
+  }
 </style>
 
 <script>
   $(document).ready(function() {
     var bird1 = new Bird("blue");
     var saucepan = true;
+    var bowtie = true;
     var jumping = false;
     var right = false;
     displayAccessoriesOnGround();
@@ -56,6 +66,7 @@
     window.setInterval(platformCollision, 300);
 
     function jump() {
+      console.log(bird1)
       if (!jumping) {
         jumping = true;
         bird1.jump();
@@ -73,17 +84,24 @@
 
     function accessoryCollision() {
       if (bird1.x > 640 && bird1.x < 765 && saucepan) {
-        bird1.addAccessory(new Accessory("saucepan", "saucepanLeft.png", "saucepanRight.png"));
+        bird1.addAccessory(new Accessory('saucepan', "saucepanLeft.png", "saucepanRight.png"));
         $('#saucepan').text('')
         saucepan = false
-        displayPlayerAccessories();
-        displayAccessoriesOnGround();
-        updateWornAccessories();
       }
+      if (bird1.x > 820 && bird1.x < 900 && bowtie) {
+        bird1.addAccessory(new Accessory('bowtie', "bowtieLeft.png", "bowtieRight.png"));
+        $('#bowtie').text('')
+        bowtie = false
+      }
+      displayPlayerAccessories();
+      displayAccessoriesOnGround();
+      updateWornAccessories();
     }
 
     function displayPlayerAccessories() {
-      $('#accessory1').text(bird1.accessories[0].name)
+      if (bird1.accessories.length > 0) {
+        $('#accessory1').text(bird1.accessories[0].name)
+      }
       if (bird1.accessories.length > 1) {
         $('#accessory2').text(bird1.accessories[1].name)
       }
@@ -91,35 +109,45 @@
 
     function updateWornAccessories() {
       if (bird1.accessories.length > 0) {
-        if (saucepanCollected) {
-          $('#saucepan').text('')
-          if (right) {
-            $('#saucepan').prepend('<img id="theImg" src="saucepanRight.png" />')
-            if (jumping) {
-              { document.getElementById('saucepan').style.left = (bird1.x - 12) + 'px'}
+        bird1.accessories.forEach(function(accessory) {
+          if (accessory.name === 'saucepan') {
+            $('#saucepan').text('')
+            if (right) {
+              $('#saucepan').prepend('<img id="theImg" src="saucepanRight.png" />')
+              if (jumping) {
+                { document.getElementById('saucepan').style.left = (bird1.x - 12) + 'px'}
+              } else {
+                { document.getElementById('saucepan').style.left = (bird1.x - 20) + 'px'}
+              }
             } else {
-              { document.getElementById('saucepan').style.left = (bird1.x - 20) + 'px'}
+              $('#saucepan').prepend('<img id="theImg" src="saucepanLeft.png" />')
+              { document.getElementById('saucepan').style.left = (bird1.x + 10) + 'px'}
             }
-          } else {
-            $('#saucepan').prepend('<img id="theImg" src="saucepanLeft.png" />')
-            { document.getElementById('saucepan').style.left = (bird1.x + 10) + 'px'}
+            { document.getElementById('saucepan').style.top = (bird1.y - 12) + 'px'}
           }
-          { document.getElementById('saucepan').style.top = (bird1.y - 12) + 'px'}
-        }
+          if(accessory.name === 'bowtie') {
+            $('#bowtie').text('')
+            if (right) {
+              $('#bowtie').prepend('<img id="theImg" src="bowtieRight.png" />')
+              { document.getElementById('bowtie').style.left = (bird1.x + 42) + 'px'}
+            } else {
+              $('#bowtie').prepend('<img id="theImg" src="bowtieLeft.png" />')
+              { document.getElementById('bowtie').style.left = (bird1.x + 10) + 'px'}
+            }
+            { document.getElementById('bowtie').style.top = (bird1.y + 48) + 'px'}
+          }
+        })
       }
-    }
-
-    function saucepanCollected() {
-      bird1.accessories.forEach(function(accessory) {
-        if (accessory.name === 'saucepan') {
-          return true
-        }
-      })
     }
 
     function displayAccessoriesOnGround() {
       if (saucepan) {
+        $('#saucepan').text('')
         $('#saucepan').prepend('<img id="theImg" src="saucepanLeft.png" />')
+      }
+      if (bowtie) {
+        $('#bowtie').text('')
+        $('#bowtie').prepend('<img id="theImg" src="bowtieLeft.png" />')
       }
     }
 
