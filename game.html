@@ -9,6 +9,7 @@
     <title>Bird Game</title>
   </head>
   <body class="background-image">
+    Player 1 Falls: <span id="bird1-fall-count">0</span>
     <div id="bird1-img">
       <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
     </div>
@@ -66,8 +67,10 @@
           { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
         } else {
           bird1.respawn();
+          bird1.increaseFallCount();
           { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
           { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
+          $('#bird1-fall-count').text(bird1.fallCount)
         }
       }
     }

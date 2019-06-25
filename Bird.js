@@ -11,23 +11,23 @@ function Bird(colour) {
 }
 
 Bird.prototype.showColour = function() {
-  return this.colour
+  return this.colour;
 };
 
 Bird.prototype.moveLeft = function() {
-  this.x -= 20
+  this.x -= 20;
 };
 
 Bird.prototype.moveRight = function() {
-  this.x += 20
+  this.x += 20;
 };
 
 Bird.prototype.jump = function() {
-  this.y -= 60
+  this.y -= 60;
 };
 
 Bird.prototype.fall = function() {
-  this.y += 60
+  this.y += 60;
 };
 
 Bird.prototype.respawn = function() {
@@ -35,6 +35,6 @@ Bird.prototype.respawn = function() {
   this.y = 100;
 }
 
-Bird.prototype.addAccessory = function(accessory) {
-  this.accessories.push(accessory)
+Bird.prototype.increaseFallCount = function() {
+  this.fallCount += 1;
 }
