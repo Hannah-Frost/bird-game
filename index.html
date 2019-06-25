@@ -6,46 +6,56 @@
     <link href="/style.css" rel="stylesheet" type="text/css" />
     <title>Title Screen</title>
   </head>
-  <body>
-  <div class="index-text">
+  <body class="background-image">
+  <center><div class="option-container">
     <button class="play-button" onclick="window.location.href='wait.html'">Play</button>
     <div>
       <br>
       <button class="howtoplay-button" onclick="window.location.href='instructions.html'">How To Play</button>
-    </div>
+    </div></center>
   </div>
 </body>
 </html>
 
 <style>
-    .index-title {
-      color: gray;
-      font-size: 32px;
-      font-family: tahoma;
+    .background-image {
+      background-image: url("background.png");
+      background-size: cover;
     }
-    .index-text {
-      background-color: gray;
+    .option-container {
+      margin-top: 220px;
+      background-color: #FFF;
       border-radius: 10px;
       padding: 45px;
-      width: 170px;
-      height: 290px;
+      width: 320px;
+      height: 100px;
     }
     .play-button {
-      color: gray;
+      color: #3e8e41;
+      background-color: white;
+      font-family: verdana;
+      font-size: 24px;
+      font-weight: 700;
+      width: 170px;
+      height: 40px;
+      border-radius: 5px;
+    }
+    .play-button:hover {
+      background-color: #3e8e41;
+      color: white;
+    }
+    .howtoplay-button {
+      color: #FFA500;
       background-color: white;
       font-family: verdana;
       font-size: 18px;
+      font-weight: 700;
       width: 170px;
       height: 30px;
       border-radius: 5px;
     }
-    .howtoplay-button {
-      color: gray;
-      background-color: white;
-      font-family: verdana;
-      font-size: 18px;
-      width: 170px;
-      height: 30px;
-      border-radius: 5px;
+    .howtoplay-button:hover {
+      background-color: #FFA500;
+      color: white;
     }
   </style>

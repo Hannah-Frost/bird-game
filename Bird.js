@@ -8,6 +8,7 @@ function Bird(colour) {
   this.x = 500;
   this.y = 100;
   this.fallCount = 0;
+  this.accessories = [];
 }
 
 Bird.prototype.showColour = function() {
@@ -37,4 +38,12 @@ Bird.prototype.respawn = function() {
 
 Bird.prototype.increaseFallCount = function() {
   this.fallCount += 1;
+}
+
+Bird.prototype.addAccessory = function(accessory) {
+  this.accessories.push(accessory);
+}
+
+Bird.prototype.showAccessories = function(accessory) {
+  return this.accessories;
 }

@@ -5,15 +5,21 @@
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="./Players.js"></script>
     <script src="./Bird.js"></script>
+    <script src="./Accessory.js"></script>
     <link href="/style.css" rel="stylesheet" type="text/css" />
     <title>Bird Game</title>
   </head>
   <body class="background-image">
-    Player 1 Falls: <span id="bird1-fall-count">0</span>
+    <h1>Player 1</h1>
+    <h1>Falls: <span id="bird1-fall-count">0</span></h1>
+    <h1>Accessories: <span id="accessory1"><span><span id="accessory2"><span></h1>
     <div id="bird1-img">
       <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
     </div>
     <img id="cloud1" src="cloudPlatform.png" alt="Cloud Platform"/>
+    <div>
+      <span id="saucepan"><span>
+    </div>
   </body>
 </html>
 
@@ -32,13 +38,20 @@
     left: 400px;
     top: 155px;
   }
+  #saucepan {
+    position: absolute;
+    left: 700px;
+    top: 135px;
+  }
 </style>
 
 <script>
   $(document).ready(function() {
     var bird1 = new Bird("blue");
-    var jumping = false
+    var saucepan = true;
+    var jumping = false;
     var right = false;
+    displayAccessories();
 
     window.setInterval(platformCollision, 300);
 
@@ -56,6 +69,30 @@
       bird1.fall()
       { document.getElementById('bird1-img').style.top = bird1.y + 'px'};
       direction()
+    }
+
+    function accessoryCollision() {
+      if (bird1.x > 640 && bird1.x < 765 && saucepan) {
+        bird1.addAccessory(new Accessory("saucepan", "saucepanLeft.png", "saucepanRight.png"));
+        saucepan = false
+        displayPlayersAccessories();
+        displayAccessories();
+      }
+    }
+
+    function displayPlayersAccessories() {
+      $('#accessory1').text(bird1.accessories[0].name)
+      if (bird1.accessories.length > 1) {
+        $('#accessory2').text(bird1.accessories[1].name)
+      }
+    }
+
+    function displayAccessories() {
+      if (saucepan) {
+        $('#saucepan').prepend('<img id="theImg" src="saucepanLeft.png" />')
+      } else {
+        $('#saucepan').text('')
+      }
     }
 
     function platformCollision() {
@@ -91,17 +128,20 @@
       var key = (event.keyCode ? event.keyCode : event.which);
       var ch=String.fromCharCode(key)
       switch (ch.toLowerCase()) {
+        case 'e':
+          accessoryCollision();
+          break;
         case 'a':
           bird1.moveLeft();
           { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
           right = false;
-          direction()
+          direction();
           break;
         case 'd':
            bird1.moveRight();
            { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
            right = true;
-           direction()
+           direction();
           break;
         case 'w':
           if (!jumping) {
