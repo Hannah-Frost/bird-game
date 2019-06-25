@@ -51,7 +51,7 @@
     var saucepan = true;
     var jumping = false;
     var right = false;
-    displayAccessories();
+    displayAccessoriesOnGround();
 
     window.setInterval(platformCollision, 300);
 
@@ -74,30 +74,48 @@
     function accessoryCollision() {
       if (bird1.x > 640 && bird1.x < 765 && saucepan) {
         bird1.addAccessory(new Accessory("saucepan", "saucepanLeft.png", "saucepanRight.png"));
+        $('#saucepan').text('')
         saucepan = false
-        displayPlayersAccessories();
-        displayAccessories();
+        displayPlayerAccessories();
+        displayAccessoriesOnGround();
+        updateWornAccessories();
       }
     }
 
-    function displayPlayersAccessories() {
+    function displayPlayerAccessories() {
       $('#accessory1').text(bird1.accessories[0].name)
       if (bird1.accessories.length > 1) {
         $('#accessory2').text(bird1.accessories[1].name)
       }
     }
 
-    function displayAccessories() {
+    function updateWornAccessories() {
+      if (bird1.accessories[0].name === 'saucepan' || bird1.accessories[1].name === 'saucepan') {
+        if (right) {
+          $('#saucepan').text('')
+          $('#saucepan').prepend('<img id="theImg" src="saucepanRight.png" />')
+          if (jumping) {
+            { document.getElementById('saucepan').style.left = (bird1.x - 12) + 'px'}
+          } else {
+            { document.getElementById('saucepan').style.left = (bird1.x - 20) + 'px'}
+          }
+        } else {
+          $('#saucepan').text('')
+          $('#saucepan').prepend('<img id="theImg" src="saucepanLeft.png" />')
+          { document.getElementById('saucepan').style.left = (bird1.x + 10) + 'px'}
+        }
+        { document.getElementById('saucepan').style.top = (bird1.y - 12) + 'px'}
+      }
+    }
+
+    function displayAccessoriesOnGround() {
       if (saucepan) {
         $('#saucepan').prepend('<img id="theImg" src="saucepanLeft.png" />')
-      } else {
-        $('#saucepan').text('')
       }
     }
 
     function platformCollision() {
       if (bird1.x > 350 && bird1.x < 950 && bird1.y === 100) {
-        console.log("ON CLOUD");
       } else if (!jumping) {
         if (bird1.y < 800) {
           bird1.fall();
@@ -122,6 +140,7 @@
       } else if (!right) {
         $('#bird1').attr("src", "leftGroundBird.png");
       }
+      updateWornAccessories();
     }
 
     $(document).keypress(function(event){
