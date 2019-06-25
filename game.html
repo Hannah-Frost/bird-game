@@ -90,22 +90,31 @@
     }
 
     function updateWornAccessories() {
-      if (bird1.accessories[0].name === 'saucepan' || bird1.accessories[1].name === 'saucepan') {
-        if (right) {
+      if (bird1.accessories.length > 0) {
+        if (saucepanCollected) {
           $('#saucepan').text('')
-          $('#saucepan').prepend('<img id="theImg" src="saucepanRight.png" />')
-          if (jumping) {
-            { document.getElementById('saucepan').style.left = (bird1.x - 12) + 'px'}
+          if (right) {
+            $('#saucepan').prepend('<img id="theImg" src="saucepanRight.png" />')
+            if (jumping) {
+              { document.getElementById('saucepan').style.left = (bird1.x - 12) + 'px'}
+            } else {
+              { document.getElementById('saucepan').style.left = (bird1.x - 20) + 'px'}
+            }
           } else {
-            { document.getElementById('saucepan').style.left = (bird1.x - 20) + 'px'}
+            $('#saucepan').prepend('<img id="theImg" src="saucepanLeft.png" />')
+            { document.getElementById('saucepan').style.left = (bird1.x + 10) + 'px'}
           }
-        } else {
-          $('#saucepan').text('')
-          $('#saucepan').prepend('<img id="theImg" src="saucepanLeft.png" />')
-          { document.getElementById('saucepan').style.left = (bird1.x + 10) + 'px'}
+          { document.getElementById('saucepan').style.top = (bird1.y - 12) + 'px'}
         }
-        { document.getElementById('saucepan').style.top = (bird1.y - 12) + 'px'}
       }
+    }
+
+    function saucepanCollected() {
+      bird1.accessories.forEach(function(accessory) {
+        if (accessory.name === 'saucepan') {
+          return true
+        }
+      })
     }
 
     function displayAccessoriesOnGround() {
