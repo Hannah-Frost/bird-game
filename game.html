@@ -35,22 +35,22 @@
   #bird1-img {
     position: absolute;
     left: 500px;
-    top: 100px;
+    top: 300px;
   }
   #cloud1 {
     position: absolute;
     left: 400px;
-    top: 155px;
+    top: 355px;
   }
   #saucepan {
     position: absolute;
     left: 700px;
-    top: 135px;
+    top: 335px;
   }
   #bowtie {
     position: absolute;
     left: 880px;
-    top: 155px;
+    top: 355px;
   }
 </style>
 
@@ -152,7 +152,7 @@
     }
 
     function platformCollision() {
-      if (bird1.x > 350 && bird1.x < 950 && bird1.y === 100) {
+      if (bird1.x > 350 && bird1.x < 950 && bird1.y === 300) {
       } else if (!jumping) {
         if (bird1.y < 800) {
           bird1.fall();

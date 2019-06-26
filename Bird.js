@@ -5,7 +5,7 @@ function Bird(colour) {
   this.rightJumpImage = "rightJumpBird.png";
   this.colour = colour;
   this.x = 500;
-  this.y = 100;
+  this.y = 300;
   this.fallCount = 0;
   this.gameOver = false;
   this.accessories = [];
