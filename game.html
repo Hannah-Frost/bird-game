@@ -10,10 +10,13 @@
     <title>Bird Game</title>
   </head>
   <body class="background-image">
-    <h1>Player 1</h1>
-    <h1>Falls: <span id="bird1-fall-count">0</span></h1>
-    <h1>Accessories: <span id="accessory1"><span></h1>
-    <h1><span id="accessory2"><span></h1>
+    <img id="player1Card" src="playerCard.png" alt="Player 1 Card"/>
+    <div class="player1CardText">
+      <h1>Player 1</h1>
+      <h1>Falls: <span id="bird1-fall-count">0</span></h1>
+      <h2><span id="accessory1"><span></h2>
+      <h2><span id="accessory2"><span></h2>
+    </div>
     <div id="bird1-img">
       <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
     </div>
@@ -31,6 +34,20 @@
   .background-image {
     background-image: url("background.png");
 	  background-size: cover;
+  }
+  .player1CardText {
+    position: absolute;
+    margin-left: 10px;
+    font-family: verdana;
+    font-size: 12px;
+  }
+  #player1Card {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  #accessory1 {
+    top: 100px;
   }
   #bird1-img {
     position: absolute;
