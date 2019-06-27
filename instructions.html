@@ -4,9 +4,43 @@
     <meta charset="utf-8">
     <title>Instructions</title>
   </head>
-  <body>
+  <body class="background-image">
     <section>
-      <button onclick="window.location.href='index.html'"><-- Go Back</button>
+      <center><div class="instructions-container">
+        <img src="controlsImage.png" alt="Controls Image"/>
+        <br>
+        <br>
+        <br>
+        <button class="back-button" onclick="window.location.href='index.html'">Back</button>
+      </div></center>
     </section>
   </body>
 </html>
+
+<style>
+  .background-image {
+    background-image: url("background.png");
+    background-size: cover;
+  }
+  .instructions-container {
+    margin-top: 150px;
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 30px;
+    width: 365px;
+  }
+  .back-button {
+    color: #ff3300;
+    background-color: white;
+    font-family: verdana;
+    font-size: 24px;
+    font-weight: 700;
+    width: 170px;
+    height: 40px;
+    border-radius: 5px;
+  }
+  .back-button:hover {
+    background-color: #ff3300;
+    color: white;
+  }
+</style>
