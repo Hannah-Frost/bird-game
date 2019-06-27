@@ -187,11 +187,13 @@
         if (bird1.y < 800) {
           bird1.fall();
           { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
+          updateWornAccessories()
         } else {
           bird1.respawn();
           bird1.increaseFallCount();
           { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
           { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
+          updateWornAccessories()
           $('#bird1-fall-count').text(bird1.fallCount)
         }
       }
