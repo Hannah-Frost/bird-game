@@ -12,10 +12,10 @@
   <body class="background-image">
     <img id="player1Card" src="playerCard.png" alt="Player 1 Card"/>
     <div class="player1CardText">
-      <h1>Player 1</h1>
-      <h1>Falls: <span id="bird1-fall-count">0</span></h1>
-      <h2><span id="accessory1"><span></h2>
-      <h2><span id="accessory2"><span></h2>
+      <h1 class="nameText">Player 1</h1>
+      <h1 class="fallText"><span id="bird1-fall-count">0</span></h1>
+      <h2 class="accessory1Text"><span id="accessory1"><span></h2>
+      <h2 class="accessory2Text"><span id="accessory2"><span></h2>
     </div>
     <div id="bird1-img">
       <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
@@ -37,17 +37,30 @@
   }
   .player1CardText {
     position: absolute;
-    margin-left: 10px;
+    margin-left: 25px;
     font-family: verdana;
+  }
+  .nameText {
+    margin-top: 15px;
+    font-size: 24px;
+  }
+  .fallText {
+    margin-top: 15px;
+    margin-left: 100px;
+    font-size: 52px;
+  }
+  .accessory1Text {
+    margin-top: -87px;
+    font-size: 12px;
+  }
+  .accessory2Text {
+    margin-top: 16px;
     font-size: 12px;
   }
   #player1Card {
     position: absolute;
     margin-top: 10px;
     margin-left: 10px;
-  }
-  #accessory1 {
-    top: 100px;
   }
   #bird1-img {
     position: absolute;
@@ -117,10 +130,10 @@
 
     function displayPlayerAccessories() {
       if (bird1.accessories.length > 0) {
-        $('#accessory1').text(bird1.accessories[0].name)
+        $('#accessory1').text(bird1.accessories[0].name.toUpperCase())
       }
       if (bird1.accessories.length > 1) {
-        $('#accessory2').text(bird1.accessories[1].name)
+        $('#accessory2').text(bird1.accessories[1].name.toUpperCase())
       }
     }
 
@@ -169,7 +182,7 @@
     }
 
     function platformCollision() {
-      if (bird1.x > 350 && bird1.x < 950 && bird1.y === 300) {
+      if (bird1.x > 350 && bird1.x < 950 && bird1.y >= 300) {
       } else if (!jumping) {
         if (bird1.y < 800) {
           bird1.fall();

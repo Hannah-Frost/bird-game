@@ -33,7 +33,7 @@ Bird.prototype.fall = function() {
 
 Bird.prototype.respawn = function() {
   this.x = 500;
-  this.y = 100;
+  this.y = 300;
 }
 
 Bird.prototype.increaseFallCount = function() {
