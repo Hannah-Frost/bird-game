@@ -12,9 +12,14 @@
     <div id="selectionHeader" style="position:absolute; left:-1280px;">
       <img src="selectionHeader.png" alt="Selection Header"/>
     </div>
+    <div>
       <img class="players-menu" src="playersMenu.png" alt="Players Menu"/>
-      <button class="start-button" onclick="window.location.href='game.html'">START GAME</button>
+      <button class="start-button" onclick="countdown()">START GAME</button>
       <button class="back-button" onclick="window.location.href='index.html'">BACK</button>
+    </div>
+      <center><div>
+        <span id="countdownText"><span>
+      </div></center>
   </body>
 </html>
 
@@ -41,12 +46,10 @@
     height: 45px;
     border-radius: 5px;
   }
-
   .start-button:hover {
     background-color: #3e8e41;
     color: white;
   }
-
   .back-button {
     position: absolute;
     margin-top: 300px;
@@ -60,15 +63,49 @@
     height: 45px;
     border-radius: 5px;
   }
-
   .back-button:hover {
     background-color: #ff3300;
     color: white;
+  }
+  #countdownText {
+    position: absolute;
+    color: #ff3300;
+    font-family: verdana;
+    font-size: 92px;
+    margin-top: 400px;
+    margin-left: -25px;
   }
 </style>
 
 <script>
   $(document).ready(function() {
     $("#selectionHeader").animate({left: "+=1280"}, 800);
+    start = 0;
   });
+
+  function countdown() {
+    start += 1;
+    if (start === 1) {
+      setTimeout(display3, 1200);
+      setTimeout(display2, 2400);
+      setTimeout(display1, 3600);
+      setTimeout(startGame, 4800);
+    }
+  }
+
+  function display3() {
+    $('#countdownText').text('3')
+  }
+
+  function display2() {
+    $('#countdownText').text('2')
+  }
+
+  function display1() {
+    $('#countdownText').text('1')
+  }
+
+  function startGame() {
+    window.location.href='game.html'
+  }
 </script>
