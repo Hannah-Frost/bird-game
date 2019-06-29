@@ -16,11 +16,11 @@ Bird.prototype.showColour = function() {
 };
 
 Bird.prototype.moveLeft = function() {
-  this.x -= 20;
+  this.x -= 30;
 };
 
 Bird.prototype.moveRight = function() {
-  this.x += 20;
+  this.x += 30;
 };
 
 Bird.prototype.jump = function() {

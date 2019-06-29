@@ -6,11 +6,12 @@
     <script src="./Players.js"></script>
     <script src="./Bird.js"></script>
     <script src="./Accessory.js"></script>
+    <script src="./Raindrop.js"></script>
     <link href="/style.css" rel="stylesheet" type="text/css" />
     <title>Bird Game</title>
   </head>
   <body class="background-image">
-    <div><span id="waveNumber"><span></div>
+    <div>WAVE: <span id="waveNumber"><span></div>
     <img id="player1Card" src="playerCard.png" alt="Player 1 Card"/>
     <div class="player1CardText">
       <div class="nameText">Player 1</div>
@@ -27,6 +28,9 @@
     </div>
     <div>
       <span id="bowtie"><span>
+    </div>
+    <div>
+      <img id="raindrop1" src="rainDrop.png" alt="Rain Drop"/>
     </div>
   </body>
 </html>
@@ -83,6 +87,11 @@
     left: 880px;
     top: 355px;
   }
+  #raindrop1 {
+    position: absolute;
+    left: 700px;
+    top: -20px;
+  }
 </style>
 
 <script>
@@ -94,7 +103,7 @@
     var right = false;
     var waveNumber = 0;
     displayAccessoriesOnGround();
-    updateWaveNumber()
+    startWave()
 
     window.setInterval(platformCollision, 300);
 
@@ -120,20 +129,26 @@
       direction()
     }
 
-    function accessoryCollision() {
-      if (bird1.x > 640 && bird1.x < 765 && saucepan) {
-        bird1.addAccessory(new Accessory('saucepan', "saucepanLeft.png", "saucepanRight.png"));
-        $('#saucepan').text('')
-        saucepan = false
+    function startWave() {
+      setTimeout($('#waveNumber').text("New wave starting..."), 100)
+      setTimeout(updateWaveNumber, 8000)
+      i = 0
+      // while (i < 10) {
+      //   setTimeout(spawnRaindrop, 1500)
+      //   i++;
+      // }
+    }
+
+    function spawnRaindrop() {
+      Math.floor(Math.random() * (950 - 350 + 1) + 350);
+      $('#raindrop1').animate({top: '+=370'}, 1000);
+      setTimeout(despawnRaindrop, 1200);
+    }
+
+    function despawnRaindrop() {
+      if (document.getElementById('raindrop1').style.top === '350px') {
+        { document.getElementById('raindrop1').style.top = -20 + 'px'}
       }
-      if (bird1.x > 820 && bird1.x < 900 && bowtie) {
-        bird1.addAccessory(new Accessory('bowtie', "bowtieLeft.png", "bowtieRight.png"));
-        $('#bowtie').text('')
-        bowtie = false
-      }
-      displayPlayerAccessories();
-      displayAccessoriesOnGround();
-      updateWornAccessories();
     }
 
     function displayPlayerAccessories() {
@@ -187,6 +202,22 @@
         $('#bowtie').text('')
         $('#bowtie').prepend('<img id="theImg" src="bowtieLeft.png" />')
       }
+    }
+
+    function accessoryCollision() {
+      if (bird1.x > 640 && bird1.x < 765 && saucepan) {
+        bird1.addAccessory(new Accessory('saucepan', "saucepanLeft.png", "saucepanRight.png"));
+        $('#saucepan').text('')
+        saucepan = false
+      }
+      if (bird1.x > 820 && bird1.x < 900 && bowtie) {
+        bird1.addAccessory(new Accessory('bowtie', "bowtieLeft.png", "bowtieRight.png"));
+        $('#bowtie').text('')
+        bowtie = false
+      }
+      displayPlayerAccessories();
+      displayAccessoriesOnGround();
+      updateWornAccessories();
     }
 
     function platformCollision() {
