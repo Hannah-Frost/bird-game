@@ -152,8 +152,9 @@
     }
 
     function spawnRaindrops() {
-      Math.floor(Math.random() * (950 - 350 + 1) + 350);
+      { document.getElementById('raindrop1').style.left = (Math.floor(Math.random() * (950 - 350 + 1) + 350)) + 'px'}
       $('#raindrop1').animate({top: '+=370'}, 1000);
+      Math.floor(Math.random() * (950 - 350 + 1) + 350)
       setTimeout(despawnRaindrops, 1200);
     }
 
