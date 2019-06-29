@@ -11,7 +11,7 @@
     <title>Bird Game</title>
   </head>
   <body class="background-image">
-    <div>WAVE: <span id="waveNumber"><span></div>
+    <div><span id="waveNumber"><span></div>
     <img id="player1Card" src="playerCard.png" alt="Player 1 Card"/>
     <div class="player1CardText">
       <div class="nameText">Player 1</div>
@@ -87,6 +87,14 @@
     left: 880px;
     top: 355px;
   }
+  #waveNumber {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 200px;
+    font-family: verdana;
+    font-size: 28px;
+    font-weight: 700;
+  }
   #raindrop1 {
     position: absolute;
     left: 700px;
@@ -102,7 +110,6 @@
     var jumping = false;
     var right = false;
     var waveNumber = 0;
-    var waveOngoing = false
     displayAccessoriesOnGround();
     startWave()
 
@@ -110,11 +117,10 @@
 
     function updateWaveNumber() {
       waveNumber += 1;
-      $('#waveNumber').text(waveNumber)
+      $('#waveNumber').text("Wave: " + waveNumber)
     }
 
     function jump() {
-      console.log(bird1)
       if (!jumping) {
         jumping = true;
         bird1.jump();
@@ -131,13 +137,11 @@
     }
 
     function startWave() {
-      waveOngoing = true
       setTimeout($('#waveNumber').text("New wave starting..."), 100)
       setTimeout(updateWaveNumber, 8000)
       i = 0
       spawnTime = 9500
       while (i < 10) {
-        console.log(waveOngoing)
         setTimeout(spawnRaindrops, spawnTime)
         spawnTime += 3000
         i++;
