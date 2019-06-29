@@ -10,12 +10,13 @@
     <title>Bird Game</title>
   </head>
   <body class="background-image">
+    <div><span id="waveNumber"><span></div>
     <img id="player1Card" src="playerCard.png" alt="Player 1 Card"/>
     <div class="player1CardText">
-      <h1 class="nameText">Player 1</h1>
-      <h1 class="fallText"><span id="bird1-fall-count">0</span></h1>
-      <h2 class="accessory1Text"><span id="accessory1"><span></h2>
-      <h2 class="accessory2Text"><span id="accessory2"><span></h2>
+      <div class="nameText">Player 1</div>
+      <div class="fallText"><span id="bird1-fall-count">0</span></div>
+      <div class="accessory1Text"><span id="accessory1"><span></div>
+      <div class="accessory2Text"><span id="accessory2"><span></div>
     </div>
     <div id="bird1-img">
       <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
@@ -50,11 +51,11 @@
     font-size: 52px;
   }
   .accessory1Text {
-    margin-top: -87px;
+    margin-top: -52px;
     font-size: 12px;
   }
   .accessory2Text {
-    margin-top: 16px;
+    margin-top: 18px;
     font-size: 12px;
   }
   #player1Card {
@@ -91,9 +92,16 @@
     var bowtie = true;
     var jumping = false;
     var right = false;
+    var waveNumber = 0;
     displayAccessoriesOnGround();
+    updateWaveNumber()
 
     window.setInterval(platformCollision, 300);
+
+    function updateWaveNumber() {
+      waveNumber += 1;
+      $('#waveNumber').text(waveNumber)
+    }
 
     function jump() {
       console.log(bird1)
