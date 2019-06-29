@@ -133,19 +133,21 @@
       setTimeout($('#waveNumber').text("New wave starting..."), 100)
       setTimeout(updateWaveNumber, 8000)
       i = 0
-      // while (i < 10) {
-      //   setTimeout(spawnRaindrop, 1500)
-      //   i++;
-      // }
+      spawnTime = 9500
+      while (i < 10) {
+        setTimeout(spawnRaindrops, spawnTime)
+        spawnTime += 3000
+        i++;
+      }
     }
 
-    function spawnRaindrop() {
+    function spawnRaindrops() {
       Math.floor(Math.random() * (950 - 350 + 1) + 350);
       $('#raindrop1').animate({top: '+=370'}, 1000);
-      setTimeout(despawnRaindrop, 1200);
+      setTimeout(despawnRaindrops, 1200);
     }
 
-    function despawnRaindrop() {
+    function despawnRaindrops() {
       if (document.getElementById('raindrop1').style.top === '350px') {
         { document.getElementById('raindrop1').style.top = -20 + 'px'}
       }
