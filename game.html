@@ -102,6 +102,7 @@
     var jumping = false;
     var right = false;
     var waveNumber = 0;
+    var waveOngoing = false
     displayAccessoriesOnGround();
     startWave()
 
@@ -130,14 +131,19 @@
     }
 
     function startWave() {
+      waveOngoing = true
       setTimeout($('#waveNumber').text("New wave starting..."), 100)
       setTimeout(updateWaveNumber, 8000)
       i = 0
       spawnTime = 9500
       while (i < 10) {
+        console.log(waveOngoing)
         setTimeout(spawnRaindrops, spawnTime)
         spawnTime += 3000
         i++;
+        if (i === 10) {
+          setTimeout(startWave, 50000)
+        }
       }
     }
 
