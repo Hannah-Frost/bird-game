@@ -157,10 +157,10 @@
 
     function spawnRaindrops() {
       { document.getElementById('raindrop1').style.left = (Math.floor(Math.random() * (950 - 360 + 1) + 360)) + 'px'}
-      $('#raindrop1').animate({top: '+=370'}, 1000);
+      $('#raindrop1').animate({top: '+=370'}, 2000);
       { document.getElementById('raindrop2').style.left = (Math.floor(Math.random() * (950 - 360 + 1) + 360)) + 'px'}
-      $('#raindrop2').animate({top: '+=370'}, 1000);
-      setTimeout(despawnRaindrops, 1200);
+      $('#raindrop2').animate({top: '+=370'}, 2000);
+      setTimeout(despawnRaindrops, 2200);
     }
 
     function despawnRaindrops() {
