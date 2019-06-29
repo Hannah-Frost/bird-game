@@ -29,9 +29,8 @@
     <div>
       <span id="bowtie"><span>
     </div>
-    <div>
-      <img id="raindrop1" src="rainDrop.png" alt="Rain Drop"/>
-    </div>
+    <div><img id="raindrop1" src="rainDrop.png" alt="Rain Drop"/></div>
+    <div><img id="raindrop2" src="rainDrop.png" alt="Rain Drop"/></div>
   </body>
 </html>
 
@@ -97,7 +96,12 @@
   }
   #raindrop1 {
     position: absolute;
-    left: 700px;
+    left: 0px;
+    top: -20px;
+  }
+  #raindrop2 {
+    position: absolute;
+    left: 0px;
     top: -20px;
   }
 </style>
@@ -152,15 +156,19 @@
     }
 
     function spawnRaindrops() {
-      { document.getElementById('raindrop1').style.left = (Math.floor(Math.random() * (950 - 350 + 1) + 350)) + 'px'}
+      { document.getElementById('raindrop1').style.left = (Math.floor(Math.random() * (950 - 360 + 1) + 360)) + 'px'}
       $('#raindrop1').animate({top: '+=370'}, 1000);
-      Math.floor(Math.random() * (950 - 350 + 1) + 350)
+      { document.getElementById('raindrop2').style.left = (Math.floor(Math.random() * (950 - 360 + 1) + 360)) + 'px'}
+      $('#raindrop2').animate({top: '+=370'}, 1000);
       setTimeout(despawnRaindrops, 1200);
     }
 
     function despawnRaindrops() {
       if (document.getElementById('raindrop1').style.top === '350px') {
         { document.getElementById('raindrop1').style.top = -20 + 'px'}
+      }
+      if (document.getElementById('raindrop2').style.top === '350px') {
+        { document.getElementById('raindrop2').style.top = -20 + 'px'}
       }
     }
 
@@ -234,7 +242,8 @@
     }
 
     function platformCollision() {
-      if (bird1.x > 350 && bird1.x < 950 && bird1.y >= 300) {
+      if (bird1.x > 350 && bird1.x < 950) {
+        // bird.y >= 300
       } else if (!jumping) {
         if (bird1.y < 800) {
           bird1.fall();
@@ -248,6 +257,7 @@
           updateWornAccessories()
           $('#bird1-fall-count').text(bird1.fallCount)
         }
+
       }
     }
 
