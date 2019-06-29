@@ -31,6 +31,7 @@
     </div>
     <div><img id="raindrop1" src="rainDrop.png" alt="Rain Drop"/></div>
     <div><img id="raindrop2" src="rainDrop.png" alt="Rain Drop"/></div>
+    <div><img id="raindrop3" src="rainDrop.png" alt="Rain Drop"/></div>
   </body>
 </html>
 
@@ -104,6 +105,11 @@
     left: 0px;
     top: -20px;
   }
+  #raindrop3 {
+    position: absolute;
+    left: 0px;
+    top: -20px;
+  }
 </style>
 
 <script>
@@ -160,6 +166,8 @@
       $('#raindrop1').animate({top: '+=370'}, 2000);
       { document.getElementById('raindrop2').style.left = (Math.floor(Math.random() * (950 - 360 + 1) + 360)) + 'px'}
       $('#raindrop2').animate({top: '+=370'}, 2000);
+      { document.getElementById('raindrop3').style.left = (Math.floor(Math.random() * (950 - 360 + 1) + 360)) + 'px'}
+      $('#raindrop3').animate({top: '+=370'}, 2000);
       setTimeout(despawnRaindrops, 2200);
     }
 
@@ -169,6 +177,9 @@
       }
       if (document.getElementById('raindrop2').style.top === '350px') {
         { document.getElementById('raindrop2').style.top = -20 + 'px'}
+      }
+      if (document.getElementById('raindrop3').style.top === '350px') {
+        { document.getElementById('raindrop3').style.top = -20 + 'px'}
       }
     }
 
