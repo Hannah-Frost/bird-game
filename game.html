@@ -130,6 +130,10 @@
     startWave()
 
     window.setInterval(platformCollision, 300);
+    window.setInterval(raindropCollision, 300, 'raindrop1');
+    window.setInterval(raindropCollision, 300, 'raindrop2');
+    window.setInterval(raindropCollision, 300, 'raindrop3');
+    window.setInterval(raindropCollision, 300, 'raindrop4');
 
     function updateWaveNumber() {
       waveNumber += 1;
@@ -302,10 +306,6 @@
         $('#bird1').attr("src", "leftGroundBird.png");
       }
       updateWornAccessories();
-      raindropCollision('raindrop1');
-      raindropCollision('raindrop2');
-      raindropCollision('raindrop3');
-      raindropCollision('raindrop4');
     }
 
     $(document).keypress(function(event){
