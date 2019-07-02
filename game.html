@@ -15,7 +15,7 @@
     <img id="player1Card" src="playerCard.png" alt="Player 1 Card"/>
     <div class="player1CardText">
       <div class="nameText">Player 1</div>
-      <div class="fallText"><span id="bird1-fall-count">0</span></div>
+      <div class="lifeText"><span id="bird1-life-count">0</span></div>
       <div class="accessory1Text"><span id="accessory1"><span></div>
       <div class="accessory2Text"><span id="accessory2"><span></div>
     </div>
@@ -50,7 +50,7 @@
     margin-top: 15px;
     font-size: 24px;
   }
-  .fallText {
+  .lifeText {
     margin-top: 15px;
     margin-left: 100px;
     font-size: 52px;
@@ -273,12 +273,19 @@
           updateWornAccessories()
         } else {
           bird1.respawn();
-          bird1.increaseFallCount();
+          bird1.decreaseLifeCount();
           { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
           { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
           updateWornAccessories()
-          $('#bird1-fall-count').text(bird1.fallCount)
+          $('#bird1-life-count').text(bird1.lifeCount)
         }
+      }
+    }
+
+    function raindropCollision(raindrop) {
+      var raindropCollisionY = bird1.y <= (document.getElementById(raindrop).style.top.slice(0, -2))
+      var raindropCollisionX = bird1.x > (document.getElementById(raindrop).style.left.slice(0, -2)) && bird1.x < ((document.getElementById(raindrop).style.left.slice(0, -2)) + 20)
+      if (raindropCollisionX && raindropCollisionY) {
 
       }
     }
@@ -294,6 +301,10 @@
         $('#bird1').attr("src", "leftGroundBird.png");
       }
       updateWornAccessories();
+      raindropCollision('raindrop1');
+      raindropCollision('raindrop2');
+      raindropCollision('raindrop3');
+      raindropCollision('raindrop4');
     }
 
     $(document).keypress(function(event){
