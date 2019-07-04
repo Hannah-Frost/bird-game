@@ -287,8 +287,8 @@
     }
 
     function raindropCollision(raindrop) {
-      var raindropCollisionY = bird1.y <= (document.getElementById(raindrop).style.top.slice(0, -2))
-      var raindropCollisionX = bird1.x > (document.getElementById(raindrop).style.left.slice(0, -2)) && bird1.x < ((document.getElementById(raindrop).style.left.slice(0, -2)) + 20)
+      var raindropCollisionY = bird1.y <= Number((document.getElementById(raindrop).style.top.slice(0, -2))) + Number(55)
+      var raindropCollisionX = (bird1.x < Number((document.getElementById(raindrop).style.left.slice(0, -2))) + Number(15)) && (bird1.x > Number((document.getElementById(raindrop).style.left.slice(0, -2))) - Number(80))
       if (raindropCollisionX && raindropCollisionY) {
         bird1.decreaseLifeCount();
         $('#bird1-life-count').text(bird1.lifeCount)
