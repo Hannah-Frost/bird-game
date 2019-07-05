@@ -5,8 +5,41 @@
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <title>Game Over</title>
   </head>
-  <body>
-    <center><h1>Game Over!</h1>
-    <button class="replay-button" onclick="window.location.href='wait.html'">Replay</button><center>
+  <body class="background-image">
+    <center><div class="game-over-container">
+    <h1 class="game-over-text">Game Over!</h1>
+    <button class="replay-button" onclick="window.location.href='wait.html'">Replay</button></div></center>
   </body>
 </html>
+
+<style>
+  .background-image {
+    background-image: url("background.png");
+	  background-size: cover;
+  }
+  .replay-button {
+    color: #3e8e41;
+    background-color: white;
+    font-family: verdana;
+    font-size: 24px;
+    font-weight: 700;
+    width: 170px;
+    height: 40px;
+    border-radius: 5px;
+  }
+  .replay-button:hover {
+    background-color: #3e8e41;
+    color: white;
+  }
+  .game-over-text {
+    font-size: 32px;
+    font-family: verdana;
+  }
+  .game-over-container {
+    margin-top: 150px;
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 30px;
+    width: 365px;
+  }
+</style>
