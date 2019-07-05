@@ -282,6 +282,7 @@
           { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
           updateWornAccessories();
           $('#bird1-life-count').text(bird1.lifeCount)
+          checkIfGameOver()
         }
       }
     }
@@ -292,6 +293,7 @@
       if (raindropCollisionX && raindropCollisionY) {
         bird1.decreaseLifeCount();
         $('#bird1-life-count').text(bird1.lifeCount)
+        checkIfGameOver()
       }
     }
 
@@ -306,6 +308,12 @@
         $('#bird1').attr("src", "leftGroundBird.png");
       }
       updateWornAccessories();
+    }
+
+    function checkIfGameOver() {
+      if (bird1.gameOver) {
+        window.location.href='end.html'
+      }
     }
 
     $(document).keypress(function(event){

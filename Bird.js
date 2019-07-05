@@ -37,7 +37,12 @@ Bird.prototype.respawn = function() {
 }
 
 Bird.prototype.decreaseLifeCount = function() {
+  if (this.lifeCount === 0) {
+    this.gameIsOver();
+    this.lifeCount = 0;
+  } else {
   this.lifeCount -= 1;
+  }
 }
 
 Bird.prototype.addAccessory = function(accessory) {
