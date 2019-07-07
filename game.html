@@ -143,7 +143,6 @@
     }
 
     function jump() {
-      console.log(bird1.coolDown)
       if (!jumping) {
         jumping = true;
         bird1.jump();
@@ -201,16 +200,21 @@
       }
     }
 
-    function displayExclamationPoint(player) {
-      console.log("1")
+    function displayExclamationPoint() {
       if (bird1.coolDown) {
-        console.log("2")
-        $(`#exclamation-point-bird${player}`).text('');
-        $(`#exclamation-point-bird${player}`).prepend('<img src="exclamation.png" />');
-        { document.getElementById('exclamation-point-bird1').style.left = (bird1.x + 30) + 'px'}
-        { document.getElementById('exclamation-point-bird1').style.top = (bird1.y - 70) + 'px'}
-        console.log("3")
+        setTimeout(startCoolDownTimer, 2000);
       }
+    }
+
+    function updateExclamationPoint() {
+      $('#exclamation-point-bird1').text('');
+      $('#exclamation-point-bird1').prepend('<img src="exclamation.png" />');
+      { document.getElementById('exclamation-point-bird1').style.left = (bird1.x + 30) + 'px'}
+      { document.getElementById('exclamation-point-bird1').style.top = (bird1.y - 70) + 'px'}
+    }
+
+    function startCoolDownTimer() {
+      bird1.coolDownOff();
     }
 
     function displayPlayerAccessories() {
@@ -306,15 +310,23 @@
       var raindropCollisionY = bird1.y <= Number((document.getElementById(raindrop).style.top.slice(0, -2))) + Number(55)
       var raindropCollisionX = (bird1.x < Number((document.getElementById(raindrop).style.left.slice(0, -2))) + Number(15)) && (bird1.x > Number((document.getElementById(raindrop).style.left.slice(0, -2))) - Number(80))
       if (raindropCollisionX && raindropCollisionY) {
-        bird1.decreaseLifeCount();
-        bird1.coolDownOn();
-        $('#bird1-life-count').text(bird1.lifeCount)
-        checkIfGameOver()
+        if (!bird1.coolDown) {
+          bird1.decreaseLifeCount();
+          bird1.coolDownOn();
+          $('#bird1-life-count').text(bird1.lifeCount);
+          checkIfGameOver();
+          displayExclamationPoint();
+          updateExclamationPoint();
+        }
       }
-      displayExclamationPoint(1)
     }
 
     function direction() {
+      if (bird1.coolDown) {
+        updateExclamationPoint();
+      } else {
+        $('#exclamation-point-bird1').text('');
+      }
       if (right && jumping) {
         $('#bird1').attr("src", "rightJumpBird.png");
       } else if (right) {
