@@ -8,6 +8,7 @@ function Bird(colour) {
   this.y = 300;
   this.lifeCount = 3;
   this.gameOver = false;
+  this.coolDown = false;
   this.accessories = [];
 }
 
@@ -51,4 +52,12 @@ Bird.prototype.addAccessory = function(accessory) {
 
 Bird.prototype.gameIsOver = function() {
   this.gameOver = true;
+}
+
+Bird.prototype.coolDownOn = function() {
+  this.coolDown = true;
+}
+
+Bird.prototype.coolDownOff = function() {
+  this.coolDown = false;
 }

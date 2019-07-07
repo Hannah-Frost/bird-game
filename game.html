@@ -23,12 +23,9 @@
       <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
     </div>
     <img id="cloud1" src="cloudPlatform.png" alt="Cloud Platform"/>
-    <div>
-      <span id="saucepan"><span>
-    </div>
-    <div>
-      <span id="bowtie"><span>
-    </div>
+    <div><span id="exclamation-point-bird1"><span></div>
+    <div><span id="saucepan"><span></div>
+    <div><span id="bowtie"><span></div>
     <div><img id="raindrop1" src="rainDrop.png" alt="Rain Drop"/></div>
     <div><img id="raindrop2" src="rainDrop.png" alt="Rain Drop"/></div>
     <div><img id="raindrop3" src="rainDrop.png" alt="Rain Drop"/></div>
@@ -77,6 +74,11 @@
     position: absolute;
     left: 400px;
     top: 355px;
+  }
+  #exclamation-point-bird1 {
+    position: absolute;
+    left: 0px;
+    top: 0px;
   }
   #saucepan {
     position: absolute;
@@ -141,6 +143,7 @@
     }
 
     function jump() {
+      console.log(bird1.coolDown)
       if (!jumping) {
         jumping = true;
         bird1.jump();
@@ -198,6 +201,18 @@
       }
     }
 
+    function displayExclamationPoint(player) {
+      console.log("1")
+      if (bird1.coolDown) {
+        console.log("2")
+        $(`#exclamation-point-bird${player}`).text('');
+        $(`#exclamation-point-bird${player}`).prepend('<img src="exclamation.png" />');
+        { document.getElementById(`exclamation-point-bird${player}`).style.left = (('bird' + player).x) + 'px'}
+        { document.getElementById(`exclamation-point-bird${player}`).style.top = (('bird' + player).x + 50) + 'px'}
+        console.log("3")
+      }
+    }
+
     function displayPlayerAccessories() {
       if (bird1.accessories.length > 0) {
         $('#accessory1').text(bird1.accessories[0].name.toUpperCase())
@@ -213,14 +228,14 @@
           if (accessory.name === 'saucepan') {
             $('#saucepan').text('')
             if (right) {
-              $('#saucepan').prepend('<img id="theImg" src="saucepanRight.png" />')
+              $('#saucepan').prepend('<img src="saucepanRight.png" />')
               if (jumping) {
                 { document.getElementById('saucepan').style.left = (bird1.x - 12) + 'px'}
               } else {
                 { document.getElementById('saucepan').style.left = (bird1.x - 20) + 'px'}
               }
             } else {
-              $('#saucepan').prepend('<img id="theImg" src="saucepanLeft.png" />')
+              $('#saucepan').prepend('<img src="saucepanLeft.png" />')
               { document.getElementById('saucepan').style.left = (bird1.x + 10) + 'px'}
             }
             { document.getElementById('saucepan').style.top = (bird1.y - 12) + 'px'}
@@ -228,10 +243,10 @@
           if(accessory.name === 'bowtie') {
             $('#bowtie').text('')
             if (right) {
-              $('#bowtie').prepend('<img id="theImg" src="bowtieRight.png" />')
+              $('#bowtie').prepend('<img src="bowtieRight.png" />')
               { document.getElementById('bowtie').style.left = (bird1.x + 42) + 'px'}
             } else {
-              $('#bowtie').prepend('<img id="theImg" src="bowtieLeft.png" />')
+              $('#bowtie').prepend('<img src="bowtieLeft.png" />')
               { document.getElementById('bowtie').style.left = (bird1.x + 10) + 'px'}
             }
             { document.getElementById('bowtie').style.top = (bird1.y + 48) + 'px'}
@@ -243,11 +258,11 @@
     function displayAccessoriesOnGround() {
       if (saucepan) {
         $('#saucepan').text('')
-        $('#saucepan').prepend('<img id="theImg" src="saucepanLeft.png" />')
+        $('#saucepan').prepend('<img src="saucepanLeft.png" />')
       }
       if (bowtie) {
         $('#bowtie').text('')
-        $('#bowtie').prepend('<img id="theImg" src="bowtieLeft.png" />')
+        $('#bowtie').prepend('<img src="bowtieLeft.png" />')
       }
     }
 
@@ -292,9 +307,11 @@
       var raindropCollisionX = (bird1.x < Number((document.getElementById(raindrop).style.left.slice(0, -2))) + Number(15)) && (bird1.x > Number((document.getElementById(raindrop).style.left.slice(0, -2))) - Number(80))
       if (raindropCollisionX && raindropCollisionY) {
         bird1.decreaseLifeCount();
+        bird1.coolDownOn();
         $('#bird1-life-count').text(bird1.lifeCount)
         checkIfGameOver()
       }
+      displayExclamationPoint(1)
     }
 
     function direction() {
