@@ -356,18 +356,15 @@
     function rocketCollision() {
       var rocketCollisionY = bird1.y === 300
       var rocketCollisionX = (bird1.x < Number((document.getElementById('rocket').style.left.slice(0, -2))) + Number(35)) && (bird1.x > Number((document.getElementById('rocket').style.left.slice(0, -2))) - Number(100))
-      console.log(rocketCollisionX)
-      console.log(rocketCollisionY)
       if (rocketCollisionX && rocketCollisionY) {
-        // if (!bird1.coolDown) {
-        //   bird1.decreaseLifeCount();
-        //   bird1.coolDownOn();
-        //   $('#bird1-life-count').text(bird1.lifeCount);
-        //   checkIfGameOver();
-        //   displayExclamationPoint();
-        //   updateExclamationPoint();
-        // }
-        console.log("collision")
+        if (!bird1.coolDown) {
+          bird1.decreaseLifeCount();
+          bird1.coolDownOn();
+          $('#bird1-life-count').text(bird1.lifeCount);
+          checkIfGameOver();
+          displayExclamationPoint();
+          updateExclamationPoint();
+        }
       }
     }
 
