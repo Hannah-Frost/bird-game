@@ -175,6 +175,7 @@
       setTimeout(updateWaveNumber, 8000)
       setTimeout(spawnRocket, 10000)
       setTimeout(spawnRocket, 20000)
+      setTimeout(spawnRocket, 30000)
       i = 0
       spawnTime = 9500
       while (i < 10) {
@@ -193,8 +194,8 @@
     }
 
     function spawnRocket() {
-      $('#rocket').animate({left: '-=1500'}, 5000);
-      setTimeout(despawnRocket, 6000);
+      $('#rocket').animate({left: '-=1500'}, 6000);
+      setTimeout(despawnRocket, 7000);
     }
 
     function despawnRocket() {
