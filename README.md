@@ -9,4 +9,7 @@
 ## How to Run Tests
 
   Copy the full path of SpecRunner.html and paste it into your web browser's search bar.
+
   The full path should look similar to this layout: `/Users/username/projects/bird-game/SpecRunner.html`.
+
+## Screenshots
