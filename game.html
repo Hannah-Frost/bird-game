@@ -154,6 +154,7 @@
     }
 
     function jump() {
+      console.log(document.getElementById('rocket').style.left)
       if (!jumping) {
         jumping = true;
         bird1.jump();
@@ -172,6 +173,8 @@
     function startWave() {
       setTimeout($('#waveNumber').text("New wave starting..."), 100)
       setTimeout(updateWaveNumber, 8000)
+      setTimeout(spawnRocket, 10000)
+      setTimeout(spawnRocket, 20000)
       i = 0
       spawnTime = 9500
       while (i < 10) {
@@ -187,6 +190,17 @@
     function spawnExtraLife() {
       { document.getElementById('extraLife').style.left = (Math.floor(Math.random() * (950 - 360 + 1) + 360)) + 'px'}
       $('#extraLife').animate({top: '+=375'}, 2000);
+    }
+
+    function spawnRocket() {
+      $('#rocket').animate({left: '-=1500'}, 5000);
+      setTimeout(despawnRocket, 6000);
+    }
+
+    function despawnRocket() {
+      if (document.getElementById('rocket').style.left === '-200px') {
+        { document.getElementById('rocket').style.left = 1300 + 'px'}
+      }
     }
 
     function spawnRaindrops() {
