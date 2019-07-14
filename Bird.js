@@ -1,9 +1,8 @@
-function Bird(colour) {
+function Bird() {
   this.leftGroundImage = "leftgroundBird.png";
   this.rightGroundImage = "rightgroundBird.png";
   this.leftJumpImage = "leftJumpBird.png";
   this.rightJumpImage = "rightJumpBird.png";
-  this.colour = colour;
   this.x = 500;
   this.y = 300;
   this.lifeCount = 3;
@@ -11,10 +10,6 @@ function Bird(colour) {
   this.coolDown = false;
   this.accessories = [];
 }
-
-Bird.prototype.showColour = function() {
-  return this.colour;
-};
 
 Bird.prototype.moveLeft = function() {
   this.x -= 30;
