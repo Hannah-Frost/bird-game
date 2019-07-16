@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <title>Title Screen</title>
+    <title>Bird Game</title>
   </head>
   <body class="background-image">
   <center><div class="option-container">
+    <span class="title-text">BIRD GAME</span>
     <button class="play-button" onclick="window.location.href='wait.html'">Play</button>
     <div>
       <br>
@@ -21,13 +22,17 @@
       background-image: url("background.png");
       background-size: cover;
     }
+    .title-text {
+      font-family: verdana;
+      font-size: 44px;
+      font-weight: 700;
+    }
     .option-container {
-      margin-top: 220px;
+      margin-top: 200px;
       background-color: #FFF;
       border-radius: 10px;
-      padding: 45px;
+      padding: 30px;
       width: 320px;
-      height: 100px;
     }
     .play-button {
       color: #3e8e41;
@@ -37,6 +42,7 @@
       font-weight: 700;
       width: 170px;
       height: 40px;
+      margin-top: 20px;
       border-radius: 5px;
     }
     .play-button:hover {
