@@ -20,7 +20,9 @@
     <div id="bird1-img">
       <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
     </div>
-    <img id="cloud1" src="cloudPlatform.png" alt="Cloud Platform"/>
+    <img id="cloudPlatform" src="cloudPlatform.png" alt="Cloud Platform"/>
+    <div><img id="clouds1" src="clouds1.png" alt="Background Clouds"/></div>
+    <div><img id="clouds2" src="clouds2.png" alt="Background Clouds"/></div>
     <div><span id="exclamation-point-bird1"><span></div>
     <div><span id="saucepan"><span></div>
     <div><span id="bowtie"><span></div>
@@ -70,10 +72,22 @@
     left: 500px;
     top: 300px;
   }
-  #cloud1 {
+  #cloudPlatform {
     position: absolute;
     left: 400px;
     top: 360px;
+  }
+  #clouds1 {
+    position: absolute;
+    left: -800px;
+    top: 50px;
+    opacity: 0.4;
+  }
+  #clouds2 {
+    position: absolute;
+    left: -800px;
+    top: 50px;
+    opacity: 0.4;
   }
   #exclamation-point-bird1 {
     position: absolute;
@@ -138,8 +152,9 @@
     var jumping = false;
     var right = false;
     var waveNumber = 0;
+    spawnClouds1();
     displayAccessoriesOnGround();
-    startWave()
+    startWave();
 
     window.setInterval(platformCollision, 300);
     window.setInterval(raindropCollision, 300, 'raindrop1');
@@ -155,6 +170,7 @@
     }
 
     function jump() {
+      console.log(document.getElementById('clouds1').style.left)
       if (!jumping) {
         jumping = true;
         bird1.jump();
@@ -191,6 +207,30 @@
     function spawnExtraLife() {
       { document.getElementById('extraLife').style.left = (Math.floor(Math.random() * (950 - 360 + 1) + 360)) + 'px'}
       $('#extraLife').animate({top: '+=375'}, 2000);
+    }
+
+    function spawnClouds1() {
+      $('#clouds1').animate({left: '+=2500'}, 40000);
+      setTimeout(spawnClouds2, 20000);
+      setTimeout(despawnClouds1, 41000);
+    }
+
+    function despawnClouds1() {
+      if (document.getElementById('clouds1').style.left === '1700px') {
+        { document.getElementById('clouds1').style.left = -800 + 'px'}
+      }
+    }
+
+    function spawnClouds2() {
+      $('#clouds2').animate({left: '+=2500'}, 40000);
+      setTimeout(spawnClouds1, 21000);
+      setTimeout(despawnClouds2, 41000);
+    }
+
+    function despawnClouds2() {
+      if (document.getElementById('clouds2').style.left === '1700px') {
+        { document.getElementById('clouds2').style.left = -800 + 'px'}
+      }
     }
 
     function spawnRocket() {
