@@ -210,25 +210,25 @@
     }
 
     function spawnClouds1() {
-      $('#clouds1').animate({left: '+=2500'}, 40000);
+      $('#clouds1').animate({left: '+=2200'}, 40000);
       setTimeout(spawnClouds2, 20000);
       setTimeout(despawnClouds1, 41000);
     }
 
     function despawnClouds1() {
-      if (document.getElementById('clouds1').style.left === '1700px') {
+      if (document.getElementById('clouds1').style.left === '1400px') {
         { document.getElementById('clouds1').style.left = -800 + 'px'}
       }
     }
 
     function spawnClouds2() {
-      $('#clouds2').animate({left: '+=2500'}, 40000);
-      setTimeout(spawnClouds1, 21000);
+      $('#clouds2').animate({left: '+=2200'}, 40000);
+      setTimeout(spawnClouds1, 26000);
       setTimeout(despawnClouds2, 41000);
     }
 
     function despawnClouds2() {
-      if (document.getElementById('clouds2').style.left === '1700px') {
+      if (document.getElementById('clouds2').style.left === '1400px') {
         { document.getElementById('clouds2').style.left = -800 + 'px'}
       }
     }
