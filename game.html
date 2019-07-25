@@ -163,6 +163,7 @@
     window.setInterval(raindropCollision, 300, 'raindrop4');
     window.setInterval(rocketCollision, 300);
     window.setInterval(spawnExtraLife, 30000);
+    window.setInterval(spawnClouds1, 42000);
 
     function updateWaveNumber() {
       waveNumber += 1;
@@ -223,7 +224,6 @@
 
     function spawnClouds2() {
       $('#clouds2').animate({left: '+=2200'}, 40000);
-      setTimeout(spawnClouds1, 22000);
       setTimeout(despawnClouds2, 41000);
     }
 

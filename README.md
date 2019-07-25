@@ -13,3 +13,7 @@
   The full path should look similar to this layout: `/Users/username/projects/bird-game/SpecRunner.html`.
 
 ## Screenshots
+
+## To do:
+1. Add leaderboard using databases.
+2. Add multiplayer element.
