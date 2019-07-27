@@ -8,5 +8,6 @@ const client = new Client({
 client.connect()
 .then(() => console.log('Connected!'))
 .then(() => client.query('SELECT * FROM leaderboard'))
+.then(results => console.table(results.rows))
 .catch(e => console.log(e))
 .finally(() => client.end())
