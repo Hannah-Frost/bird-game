@@ -18,7 +18,10 @@
     </div>
       <center><div>
         <span id="countdownText"><span>
-        <span id="leaderboard"><span>
+        <form id="nameForm">
+          <input id="nickname" type="text" size="25" placeholder="Enter a nickname.."/>
+          <input type ="button" id = "saveName" value="Save Name"/>
+        </form>
       </div></center>
   </body>
 </html>
@@ -79,21 +82,13 @@
 
 <script>
   $(document).ready(function() {
-    // const { Client } = require('pg')
-    // const client = new Client({
-    //   user: 'hannahfrost',
-    //   host: 'localhost',
-    //   database: 'bird_game'
-    // })
-    // client.connect()
-    // .then(() => console.log('Connected!'))
-    // .then(() => client.query('SELECT * FROM leaderboard'))
-    // .then(() => $('#leaderboard').text('hello'))
-    // .catch(e => console.log(e))
-    // .finally(() => client.end())
-
     $("#selectionHeader").animate({left: "+=1280"}, 800);
     start = 0;
+
+    $("#saveName").click(function(e){
+      var name = $('#nickname').val();
+      sessionStorage.setItem('name', name);
+    });
   });
 
   function countdown() {
