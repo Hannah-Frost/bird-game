@@ -19,13 +19,13 @@
       <span id="player2name">Player 2</span>
       <span id="player3name">Player 3</span>
     </div></center>
-    <div class="nameForm1"><input id="nickname1" type="text" size="15" placeholder="ENTER A NICKNAME"/>
+    <div class="nameForm1"><input id="nickname1" type="text" size="15" placeholder="ENTER NICKNAME"/>
     <br>
     <input id = "saveName1" type ="button" value="Save Name"/></div>
-    <div class="nameForm2"><input id="nickname2" type="text" size="15" placeholder="ENTER A NICKNAME"/>
+    <div class="nameForm2"><input id="nickname2" type="text" size="15" placeholder="ENTER NICKNAME"/>
     <br>
     <input id = "saveName2" type ="button" value="Save Name"/></div>
-    <div class="nameForm3"><input id="nickname3" type="text" size="15" placeholder="ENTER A NICKNAME"/>
+    <div class="nameForm3"><input id="nickname3" type="text" size="15" placeholder="ENTER NICKNAME"/>
     <br>
     <input id = "saveName3" type ="button" value="Save Name"/></div>
     <center><div>
@@ -47,25 +47,25 @@
     margin-top: 80px;
   }
   .nameForm1 {
-    margin-top: -70px;
+    margin-top: -80px;
     margin-left: 385px;
   }
   .nameForm2 {
-    margin-top: -18px;
+    margin-top: -32px;
     margin-left: 573px;
   }
   .nameForm3 {
-    margin-top: -20px;
+    margin-top: -30px;
     margin-left: 760px;
   }
   .start-button {
-    margin-top: 50px;
+    margin-top: 70px;
     color: #3e8e41;
     background-color: white;
     font-family: verdana;
     font-weight: 700;
     font-size: 18px;
-    width: 200px;
+    width: 250px;
     height: 45px;
     border-radius: 5px;
   }
@@ -79,7 +79,7 @@
     font-family: verdana;
     font-weight: 700;
     font-size: 18px;
-    width: 200px;
+    width: 250px;
     height: 45px;
     border-radius: 5px;
   }
@@ -106,10 +106,20 @@
   #saveName1, #saveName2, #saveName3 {
     position: absolute;
     font-family: verdana;
-    font-size: 92px;
     font-size: 14px;
     width: 120px;
     height: 30px;
+    border-radius: 5px;
+  }
+  #saveName1:hover, #saveName2:hover, #saveName3:hover {
+    background-color: #3e8e41;
+    color: white;
+  }
+  #nickname1, #nickname2, #nickname3 {
+    font-family: verdana;
+    font-size: 11px;
+    width: 115px;
+    height: 25px;
     border-radius: 5px;
   }
   #countdownText {
@@ -130,14 +140,20 @@
 
     $("#saveName1").click(function(e){
       sessionStorage.setItem('name1', $('#nickname1').val());
+      { document.getElementById('saveName1').style.background = '#3e8e41'}
+      { document.getElementById('saveName1').style.color = 'white'}
     });
 
     $("#saveName2").click(function(e){
       sessionStorage.setItem('name2', $('#nickname2').val());
+      { document.getElementById('saveName2').style.background = '#3e8e41'}
+      { document.getElementById('saveName2').style.color = 'white'}
     });
 
     $("#saveName3").click(function(e){
       sessionStorage.setItem('name3', $('#nickname3').val());
+      { document.getElementById('saveName3').style.background = '#3e8e41'}
+      { document.getElementById('saveName3').style.color = 'white'}
     });
   });
 
