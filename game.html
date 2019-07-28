@@ -12,7 +12,7 @@
     <div><span id="waveNumber"><span></div>
     <img id="player1Card" src="playerCard.png" alt="Player 1 Card"/>
     <div class="player1CardText">
-      <div class="nameText">Player 1</div>
+      <div class="nameText"><span id="name"></span></div>
       <div class="lifeText"><span id="bird1-life-count">3</span></div>
       <div class="accessory1Text"><span id="accessory1"><span></div>
       <div class="accessory2Text"><span id="accessory2"><span></div>
@@ -147,13 +147,13 @@
 <script>
   $(document).ready(function() {
     let name = sessionStorage.getItem('name');
+    $('#name').text(name);
     var bird1 = new Bird();
     var saucepan = true;
     var bowtie = true;
     var jumping = false;
     var right = false;
     var waveNumber = 0;
-    updateNickname();
     spawnClouds1();
     displayAccessoriesOnGround();
     startWave();
@@ -167,17 +167,13 @@
     window.setInterval(spawnExtraLife, 30000);
     window.setInterval(spawnClouds1, 42000);
 
-    function updateNickname() {
-      $('#nameText').text(name)
-    }
-
     function updateWaveNumber() {
       waveNumber += 1;
       $('#waveNumber').text("Wave: " + waveNumber)
     }
 
     function jump() {
-      console.log(document.getElementById('clouds1').style.left)
+      console.log(sessionStorage.getItem('name'))
       if (!jumping) {
         jumping = true;
         bird1.jump();
