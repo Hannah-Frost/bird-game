@@ -112,7 +112,7 @@
     border-radius: 5px;
   }
   #saveName1:hover, #saveName2:hover, #saveName3:hover {
-    background-color: #3e8e41;
+    background-color: #ffa035;
     color: white;
   }
   #nickname1, #nickname2, #nickname3 {
@@ -139,21 +139,27 @@
     start = 0;
 
     $("#saveName1").click(function(e){
-      sessionStorage.setItem('name1', $('#nickname1').val());
-      { document.getElementById('saveName1').style.background = '#3e8e41'}
-      { document.getElementById('saveName1').style.color = 'white'}
+      if ($('#nickname1').val() !== '') {
+        sessionStorage.setItem('name1', $('#nickname1').val());
+        { document.getElementById('saveName1').style.background = '#3e8e41'}
+        { document.getElementById('saveName1').style.color = 'white'}
+      };
     });
 
     $("#saveName2").click(function(e){
-      sessionStorage.setItem('name2', $('#nickname2').val());
-      { document.getElementById('saveName2').style.background = '#3e8e41'}
-      { document.getElementById('saveName2').style.color = 'white'}
+      if ($('#nickname2').val() !== '') {
+        sessionStorage.setItem('name2', $('#nickname2').val());
+        { document.getElementById('saveName2').style.background = '#3e8e41'}
+        { document.getElementById('saveName2').style.color = 'white'}
+      };
     });
 
     $("#saveName3").click(function(e){
-      sessionStorage.setItem('name3', $('#nickname3').val());
-      { document.getElementById('saveName3').style.background = '#3e8e41'}
-      { document.getElementById('saveName3').style.color = 'white'}
+      if ($('#nickname3').val() !== '') {
+        sessionStorage.setItem('name3', $('#nickname3').val());
+        { document.getElementById('saveName3').style.background = '#3e8e41'}
+        { document.getElementById('saveName3').style.color = 'white'}
+      };
     });
   });
 
