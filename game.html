@@ -146,14 +146,13 @@
 
 <script>
   $(document).ready(function() {
-    let name = sessionStorage.getItem('name');
-    $('#name').text(name);
     var bird1 = new Bird();
     var saucepan = true;
     var bowtie = true;
     var jumping = false;
     var right = false;
     var waveNumber = 0;
+    updateNickname();
     spawnClouds1();
     displayAccessoriesOnGround();
     startWave();
@@ -166,6 +165,10 @@
     window.setInterval(rocketCollision, 300);
     window.setInterval(spawnExtraLife, 30000);
     window.setInterval(spawnClouds1, 42000);
+
+    function updateNickname() {
+      $('#name').text(sessionStorage.getItem('name'));
+    }
 
     function updateWaveNumber() {
       waveNumber += 1;
