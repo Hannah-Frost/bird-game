@@ -12,7 +12,9 @@
     <div><span id="waveNumber"><span></div>
     <img id="player1Card" src="playerCard.png" alt="Player 1 Card"/>
     <div class="player1CardText">
-      <div class="nameText"><span id="name"></span></div>
+      <div class="nameText"><span id="name1"></span></div>
+      <div class="nameText"><span id="name2"></span></div>
+      <div class="nameText"><span id="name3"></span></div>
       <div class="lifeText"><span id="bird1-life-count">3</span></div>
       <div class="accessory1Text"><span id="accessory1"><span></div>
       <div class="accessory2Text"><span id="accessory2"><span></div>
@@ -152,7 +154,7 @@
     var jumping = false;
     var right = false;
     var waveNumber = 0;
-    updateNickname();
+    updateNicknames();
     spawnClouds1();
     displayAccessoriesOnGround();
     startWave();
@@ -166,8 +168,10 @@
     window.setInterval(spawnExtraLife, 30000);
     window.setInterval(spawnClouds1, 42000);
 
-    function updateNickname() {
-      $('#name').text(sessionStorage.getItem('name'));
+    function updateNicknames() {
+      $('#name1').text(sessionStorage.getItem('name1'));
+      $('#name2').text(sessionStorage.getItem('name2'));
+      $('#name3').text(sessionStorage.getItem('name3'));
     }
 
     function updateWaveNumber() {

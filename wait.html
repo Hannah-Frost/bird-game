@@ -19,9 +19,15 @@
       <span id="player2name">Player 2</span>
       <span id="player3name">Player 3</span>
     </div></center>
-    <div class="nameForm"><input id="nickname" type="text" size="15" placeholder="ENTER A NICKNAME"/>
+    <div class="nameForm1"><input id="nickname1" type="text" size="15" placeholder="ENTER A NICKNAME"/>
     <br>
-    <input id = "saveName" type ="button" value="Save Name"/></div>
+    <input id = "saveName1" type ="button" value="Save Name"/></div>
+    <div class="nameForm2"><input id="nickname2" type="text" size="15" placeholder="ENTER A NICKNAME"/>
+    <br>
+    <input id = "saveName2" type ="button" value="Save Name"/></div>
+    <div class="nameForm3"><input id="nickname3" type="text" size="15" placeholder="ENTER A NICKNAME"/>
+    <br>
+    <input id = "saveName3" type ="button" value="Save Name"/></div>
     <center><div>
       <button class="start-button" onclick="countdown()">START GAME</button>
       <button class="back-button" onclick="window.location.href='index.html'">BACK</button>
@@ -38,11 +44,22 @@
 	  background-size: cover;
   }
   .playersInfo {
-    /* position: absolute; */
     margin-top: 80px;
   }
+  .nameForm1 {
+    margin-top: -70px;
+    margin-left: 385px;
+  }
+  .nameForm2 {
+    margin-top: -18px;
+    margin-left: 573px;
+  }
+  .nameForm3 {
+    margin-top: -20px;
+    margin-left: 760px;
+  }
   .start-button {
-    margin-top: 40px;
+    margin-top: 50px;
     color: #3e8e41;
     background-color: white;
     font-family: verdana;
@@ -86,11 +103,10 @@
   #player3name {
     margin-left: -165px;
   }
-  #saveName {
+  #saveName1, #saveName2, #saveName3 {
+    position: absolute;
     font-family: verdana;
     font-size: 92px;
-    /* margin-top: 320px; */
-    margin-left: 120px;
     font-size: 14px;
     width: 120px;
     height: 30px;
@@ -107,11 +123,21 @@
 <script>
   $(document).ready(function() {
     $("#selectionHeader").animate({left: "+=1280"}, 800);
+    sessionStorage.setItem('name1', 'Player 1');
+    sessionStorage.setItem('name2', 'Player 2');
+    sessionStorage.setItem('name3', 'Player 3');
     start = 0;
 
-    $("#saveName").click(function(e){
-      var name = $('#nickname').val();
-      sessionStorage.setItem('name', name);
+    $("#saveName1").click(function(e){
+      sessionStorage.setItem('name1', $('#nickname1').val());
+    });
+
+    $("#saveName2").click(function(e){
+      sessionStorage.setItem('name2', $('#nickname2').val());
+    });
+
+    $("#saveName3").click(function(e){
+      sessionStorage.setItem('name3', $('#nickname3').val());
     });
   });
 
