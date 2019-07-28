@@ -8,20 +8,26 @@
     <title>Waiting for Players...</title>
   </head>
   <body class="background-image">
-    <div id="selectionHeader" style="position:absolute; left:-1280px;">
+    <div id="selectionHeader" style="position:absolute; left:-1280px; top:20px;">
       <img src="selectionHeader.png" alt="Selection Header"/>
     </div>
-    <div>
-      <img class="players-menu" src="playersMenu.png" alt="Players Menu"/>
+    <center><div class="playersInfo">
+      <img src="playerInfo.png" alt="Player 1 Information"/>
+      <img src="playerInfo.png" alt="Player 2 Information"/>
+      <img src="playerInfo.png" alt="Player 3 Information"/>
+      <span id="player1name">Player 1</span>
+      <span id="player2name">Player 2</span>
+      <span id="player3name">Player 3</span>
+    </div></center>
+    <div class="nameForm"><input id="nickname" type="text" size="15" placeholder="ENTER A NICKNAME"/>
+    <br>
+    <input id = "saveName" type ="button" value="Save Name"/></div>
+    <center><div>
       <button class="start-button" onclick="countdown()">START GAME</button>
       <button class="back-button" onclick="window.location.href='index.html'">BACK</button>
-    </div>
+    </div></center>
       <center><div>
         <span id="countdownText"><span>
-        <form id="nameForm">
-          <input id="nickname" type="text" size="25" placeholder="Enter a nickname.."/>
-          <input type ="button" id = "saveName" value="Save Name"/>
-        </form>
       </div></center>
   </body>
 </html>
@@ -31,15 +37,12 @@
     background-image: url("background.png");
 	  background-size: cover;
   }
-  .players-menu {
-    position: absolute;
-    margin-left: 380px;
-    margin-top: 100px;
+  .playersInfo {
+    /* position: absolute; */
+    margin-top: 80px;
   }
   .start-button {
-    position: absolute;
-    margin-top: 250px;
-    margin-left: 550px;
+    margin-top: 40px;
     color: #3e8e41;
     background-color: white;
     font-family: verdana;
@@ -54,9 +57,6 @@
     color: white;
   }
   .back-button {
-    position: absolute;
-    margin-top: 300px;
-    margin-left: 550px;
     color: #ff3300;
     background-color: white;
     font-family: verdana;
@@ -70,12 +70,36 @@
     background-color: #ff3300;
     color: white;
   }
-  #countdownText {
+  #player1name, #player2name, #player3name {
     position: absolute;
+    font-family: verdana;
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  #player1name {
+    margin-left: -535px;
+  }
+  #player2name {
+    margin-left: -350px;
+  }
+  #player3name {
+    margin-left: -165px;
+  }
+  #saveName {
+    font-family: verdana;
+    font-size: 92px;
+    /* margin-top: 320px; */
+    margin-left: 120px;
+    font-size: 14px;
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+  }
+  #countdownText {
     color: #ff3300;
     font-family: verdana;
     font-size: 92px;
-    margin-top: 400px;
     margin-left: -25px;
   }
 </style>
@@ -94,10 +118,10 @@
   function countdown() {
     start += 1;
     if (start === 1) {
-      setTimeout(display3, 1200);
-      setTimeout(display2, 2400);
-      setTimeout(display1, 3600);
-      setTimeout(startGame, 4800);
+      setTimeout(display3, 200);
+      setTimeout(display2, 1400);
+      setTimeout(display1, 2600);
+      setTimeout(startGame, 3800);
     }
   }
 
