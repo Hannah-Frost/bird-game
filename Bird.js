@@ -33,7 +33,9 @@ Bird.prototype.respawn = function() {
 }
 
 Bird.prototype.increaseLifeCount = function() {
-  this.lifeCount += 1;
+  if (this.lifeCount !== 9) {
+    this.lifeCount += 1;
+  }
 }
 
 Bird.prototype.decreaseLifeCount = function() {

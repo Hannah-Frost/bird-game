@@ -486,11 +486,11 @@
       updateWornAccessories();
     }
 
-    // function checkIfGameOver() {
-    //   if (bird1.gameOver) {
-    //     window.location.href='end.html'
-    //   }
-    // }
+    function checkIfGameOver() {
+      if (bird1.gameOver) {
+        window.location.href='end.html'
+      }
+    }
 
     $(document).keypress(function(event){
       var key = (event.keyCode ? event.keyCode : event.which);
