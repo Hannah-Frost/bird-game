@@ -140,7 +140,7 @@
 
     $("#saveName1").click(function(e){
       if ($('#nickname1').val() !== '') {
-        sessionStorage.setItem('name1', $('#nickname1').val());
+        sessionStorage.setItem('name1', $('#nickname1').val().replace(' ', '_'));
         { document.getElementById('saveName1').style.background = '#3e8e41'}
         { document.getElementById('saveName1').style.color = 'white'}
         { document.getElementById('saveName1').value = 'Name Saved'}
@@ -149,7 +149,7 @@
 
     $("#saveName2").click(function(e){
       if ($('#nickname2').val() !== '') {
-        sessionStorage.setItem('name2', $('#nickname2').val());
+        sessionStorage.setItem('name2', $('#nickname2').val().replace(' ', '_'));
         { document.getElementById('saveName2').style.background = '#3e8e41'}
         { document.getElementById('saveName2').style.color = 'white'}
         { document.getElementById('saveName2').value = 'Name Saved'}
@@ -158,7 +158,7 @@
 
     $("#saveName3").click(function(e){
       if ($('#nickname3').val() !== '') {
-        sessionStorage.setItem('name3', $('#nickname3').val());
+        sessionStorage.setItem('name3', $('#nickname3').val().replace(' ', '_'));
         { document.getElementById('saveName3').style.background = '#3e8e41'}
         { document.getElementById('saveName3').style.color = 'white'}
         { document.getElementById('saveName3').value = 'Name Saved'}
