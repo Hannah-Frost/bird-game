@@ -11,13 +11,27 @@
   <body class="background-image">
     <div><span id="waveNumber"><span></div>
     <img id="player1Card" src="playerCard.png" alt="Player 1 Card"/>
-    <div class="player1CardText">
-      <div class="nameText"><span id="name1"></span></div>
-      <div class="nameText"><span id="name2"></span></div>
-      <div class="nameText"><span id="name3"></span></div>
-      <div class="lifeText"><span id="bird1-life-count">3</span></div>
-      <div class="accessory1Text"><span id="accessory1"><span></div>
-      <div class="accessory2Text"><span id="accessory2"><span></div>
+    <br>
+    <img id="player2Card" src="playerCard.png" alt="Player 2 Card"/>
+    <br>
+    <img id="player3Card" src="playerCard.png" alt="Player 3 Card"/>
+    <div class="player1Text">
+      <span id="name1"></span>
+      <span id="lifeText1">3</span>
+      <span id="accessory11"><span>
+      <span id="accessory21"><span>
+    </div>
+    <div class="player2Text">
+      <span id="name2"></span>
+      <span id="lifeText2">3</span>
+      <span id="accessory12"><span>
+      <span id="accessory22"><span>
+    </div>
+    <div class="player3Text">
+      <span id="name3"></span>
+      <span id="lifeText3">3</span>
+      <span id="accessory13"><span>
+      <span id="accessory23"><span>
     </div>
     <div id="bird1-img">
       <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
@@ -42,30 +56,28 @@
     background-image: url("background.png");
 	  background-size: cover;
   }
-  .player1CardText {
-    position: absolute;
+  .player1Text, .player2Text, .player3Text {
     margin-left: 25px;
     font-family: verdana;
   }
-  .nameText {
+  #name1, #name2, #name3 {
     margin-top: 15px;
     font-size: 24px;
   }
-  .lifeText {
+  #lifeText1, #lifeText2, #lifeText3 {
     margin-top: 15px;
     margin-left: 100px;
     font-size: 52px;
   }
-  .accessory1Text {
+  #accessory11 {
     margin-top: -52px;
     font-size: 12px;
   }
-  .accessory2Text {
+  #accessory21 {
     margin-top: 18px;
     font-size: 12px;
   }
-  #player1Card {
-    position: absolute;
+  #player1Card, #player2Card, #player3Card {
     margin-top: 10px;
     margin-left: 10px;
   }
@@ -298,10 +310,10 @@
 
     function displayPlayerAccessories() {
       if (bird1.accessories.length > 0) {
-        $('#accessory1').text(bird1.accessories[0].name.toUpperCase())
+        $('#accessory11').text(bird1.accessories[0].name.toUpperCase())
       }
       if (bird1.accessories.length > 1) {
-        $('#accessory2').text(bird1.accessories[1].name.toUpperCase())
+        $('#accessory21').text(bird1.accessories[1].name.toUpperCase())
       }
     }
 
@@ -379,7 +391,7 @@
           { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
           { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
           updateWornAccessories();
-          $('#bird1-life-count').text(bird1.lifeCount)
+          $('#lifeText1').text(bird1.lifeCount)
           checkIfGameOver()
         }
       }
@@ -392,7 +404,7 @@
         if (!bird1.coolDown) {
           bird1.decreaseLifeCount();
           bird1.coolDownOn();
-          $('#bird1-life-count').text(bird1.lifeCount);
+          $('#lifeText1').text(bird1.lifeCount);
           checkIfGameOver();
           displayExclamationPoint();
           updateExclamationPoint();
@@ -407,7 +419,7 @@
         if (!bird1.coolDown) {
           bird1.decreaseLifeCount();
           bird1.coolDownOn();
-          $('#bird1-life-count').text(bird1.lifeCount);
+          $('#lifeText1').text(bird1.lifeCount);
           checkIfGameOver();
           displayExclamationPoint();
           updateExclamationPoint();
@@ -420,7 +432,7 @@
       var extraLifeCollisionX = (bird1.x < Number((document.getElementById('extraLife').style.left.slice(0, -2))) + Number(25)) && (bird1.x > Number((document.getElementById('extraLife').style.left.slice(0, -2))) - Number(90))
       if (extraLifeCollisionX && extraLifeCollisionY) {
         bird1.increaseLifeCount();
-        $('#bird1-life-count').text(bird1.lifeCount);
+        $('#lifeText1').text(bird1.lifeCount);
         { document.getElementById('extraLife').style.top = -30 + 'px'}
       }
     }
