@@ -18,20 +18,20 @@
     <div class="player1Text">
       <span id="name1"></span>
       <span id="lifeText1">3</span>
-      <span id="accessory11"><span>
-      <span id="accessory21"><span>
+      <span id="accessory11">EMPTY<span>
+      <span id="accessory21">EMPTY<span>
     </div>
     <div class="player2Text">
       <span id="name2"></span>
       <span id="lifeText2">3</span>
-      <span id="accessory12"><span>
-      <span id="accessory22"><span>
+      <span id="accessory12">EMPTY<span>
+      <span id="accessory22">EMPTY<span>
     </div>
     <div class="player3Text">
       <span id="name3"></span>
       <span id="lifeText3">3</span>
-      <span id="accessory13"><span>
-      <span id="accessory23"><span>
+      <span id="accessory13">EMPTY<span>
+      <span id="accessory23">EMPTY<span>
     </div>
     <div id="bird1-img">
       <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
@@ -90,13 +90,27 @@
   #lifeText3 {
     margin-top: 310px;
   }
-  #accessory11 {
-    /* margin-top: -52px; */
+  #accessory11, #accessory21, #accessory12, #accessory22, #accessory13, #accessory23 {
+    position: absolute;
     font-size: 12px;
   }
+  #accessory11 {
+    margin-top: 48px;
+  }
   #accessory21 {
-    /* margin-top: 18px; */
-    font-size: 12px;
+    margin-top: 16px;
+  }
+  #accessory12 {
+    margin-top: 184px;
+  }
+  #accessory22 {
+    margin-top: 16px;
+  }
+  #accessory13 {
+    margin-top: 320px;
+  }
+  #accessory23 {
+    margin-top: 16px;
   }
   #bird1-img {
     position: absolute;
