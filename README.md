@@ -15,5 +15,4 @@
 ## Screenshots
 
 ## To do:
-1. Add leaderboard using databases.
-2. Add multiplayer element.
+* Use vue, node, and socket.io to create multiplayer element.
