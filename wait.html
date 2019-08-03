@@ -37,8 +37,8 @@
       <span id="countdownText"><span>
     </div></center>
     <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
+    <form class="message-form" action="">
+      <input class="message-text" id="m" autocomplete="off" /><button class="send-button">SEND</button>
     </form>
   </body>
 </html>
@@ -90,6 +90,26 @@
   }
   .back-button:hover {
     background-color: #ff3300;
+    color: white;
+  }
+  .message-form {
+    margin-left: 50px;
+  }
+  .message-text {
+    width: 300px;
+    height: 20px;
+  }
+  .send-button {
+    color: #3e8e41;
+    background-color: white;
+    font-family: verdana;
+    font-weight: 700;
+    font-size: 18px;
+    width: 100px;
+    height: 28px;
+  }
+  .send-button:hover {
+    background-color: #3e8e41;
     color: white;
   }
   #player1name, #player2name, #player3name {
