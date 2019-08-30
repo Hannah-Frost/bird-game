@@ -9,7 +9,7 @@
     <title>Bird Game</title>
   </head>
   <body class="background-image">
-    <div><span id="waveNumber"><span></div>
+    <div><span id="timer"><span></div>
     <img id="player1Card" src="playerCard.png" alt="Player 1 Card"/>
     <br>
     <img id="player2Card" src="playerCard.png" alt="Player 2 Card"/>
@@ -146,7 +146,7 @@
     left: 0px;
     top: -30px;
   }
-  #waveNumber {
+  #timer {
     position: absolute;
     margin-top: 10px;
     margin-left: 200px;
@@ -188,11 +188,14 @@
     var bowtie = true;
     var jumping = false;
     var right = false;
-    var waveNumber = 0;
+    var count = 60, timer = setInterval(function() {
+        $("#timer").html(count--);
+        if(count == 1) clearInterval(timer);
+    }, 1000);
     updateNicknames();
     spawnClouds1();
     displayAccessoriesOnGround();
-    startWave();
+    startTimer();
 
     window.setInterval(platformCollision, 300);
     window.setInterval(raindropCollision, 300, 'raindrop1');
@@ -207,11 +210,6 @@
       $('#name1').text(sessionStorage.getItem('name1'));
       $('#name2').text(sessionStorage.getItem('name2'));
       $('#name3').text(sessionStorage.getItem('name3'));
-    }
-
-    function updateWaveNumber() {
-      waveNumber += 1;
-      $('#waveNumber').text("Wave: " + waveNumber)
     }
 
     function jump() {
@@ -230,9 +228,8 @@
       direction()
     }
 
-    function startWave() {
-      setTimeout($('#waveNumber').text("New wave starting..."), 100)
-      setTimeout(updateWaveNumber, 8000)
+    function startTimer() {
+      setTimeout($('#timer').text("Better start collecting..."), 100)
       setTimeout(spawnRocket, 10000)
       setTimeout(spawnRocket, 20000)
       setTimeout(spawnRocket, 30000)
@@ -243,7 +240,7 @@
         spawnTime += 3000
         i++;
         if (i === 10) {
-          setTimeout(startWave, 50000)
+          setTimeout(startTimer, 50000)
         }
       }
     }
