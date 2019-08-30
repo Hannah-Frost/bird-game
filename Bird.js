@@ -5,7 +5,7 @@ function Bird() {
   this.rightJumpImage = "rightJumpBird.png";
   this.x = 500;
   this.y = 300;
-  this.lifeCount = 3;
+  this.foodCount = 6;
   this.gameOver = false;
   this.coolDown = false;
   this.accessories = [];
@@ -32,18 +32,18 @@ Bird.prototype.respawn = function() {
   this.y = 300;
 }
 
-Bird.prototype.increaseLifeCount = function() {
-  if (this.lifeCount !== 9) {
-    this.lifeCount += 1;
+Bird.prototype.increaseFoodCount = function() {
+  if (this.foodCount !== 9) {
+    this.foodCount += 1;
   }
 }
 
-Bird.prototype.decreaseLifeCount = function() {
-  if (this.lifeCount === 1) {
+Bird.prototype.decreaseFoodCount = function() {
+  if (this.foodCount === 1) {
     this.gameIsOver();
-    this.lifeCount = 0;
+    this.foodCount = 0;
   } else {
-  this.lifeCount -= 1;
+  this.foodCount -= 1;
   }
 }
 

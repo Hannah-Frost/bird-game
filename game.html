@@ -17,19 +17,19 @@
     <img id="player3Card" src="playerCard.png" alt="Player 3 Card"/>
     <div class="player1Text">
       <span id="name1"></span>
-      <span id="lifeText1">3</span>
+      <span id="foodText1">5</span>
       <span id="accessory11">EMPTY<span>
       <span id="accessory21">EMPTY<span>
     </div>
     <div class="player2Text">
       <span id="name2"></span>
-      <span id="lifeText2">3</span>
+      <span id="foodText2">5</span>
       <span id="accessory12">EMPTY<span>
       <span id="accessory22">EMPTY<span>
     </div>
     <div class="player3Text">
       <span id="name3"></span>
-      <span id="lifeText3">3</span>
+      <span id="foodText3">5</span>
       <span id="accessory13">EMPTY<span>
       <span id="accessory23">EMPTY<span>
     </div>
@@ -42,7 +42,7 @@
     <div><span id="exclamation-point-bird1"><span></div>
     <div><span id="saucepan"><span></div>
     <div><span id="bowtie"><span></div>
-    <div><img id="extraLife" src="extraLife.png" alt="Extra Life"/></div>
+    <div><img id="extraFood" src="extraFood.png" alt="Extra Food"/></div>
     <div><img id="rocket" src="rocket.png" alt="Rocket"/></div>
     <div><img id="raindrop1" src="rainDrop.png" alt="Rain Drop"/></div>
     <div><img id="raindrop2" src="rainDrop.png" alt="Rain Drop"/></div>
@@ -76,18 +76,18 @@
   #name3 {
     margin-top: 270px;
   }
-  #lifeText1, #lifeText2, #lifeText3 {
+  #foodText1, #foodText2, #foodText3 {
     position: absolute;
     margin-left: 103px;
     font-size: 52px;
   }
-  #lifeText1 {
+  #foodText1 {
     margin-top: 35px;
   }
-  #lifeText2 {
+  #foodText2 {
     margin-top: 170px;
   }
-  #lifeText3 {
+  #foodText3 {
     margin-top: 310px;
   }
   #accessory11, #accessory21, #accessory12, #accessory22, #accessory13, #accessory23 {
@@ -141,7 +141,7 @@
     left: 880px;
     top: 355px;
   }
-  #extraLife {
+  #extraFood {
     position: absolute;
     left: 0px;
     top: -30px;
@@ -200,7 +200,7 @@
     window.setInterval(raindropCollision, 300, 'raindrop3');
     window.setInterval(raindropCollision, 300, 'raindrop4');
     window.setInterval(rocketCollision, 300);
-    window.setInterval(spawnExtraLife, 30000);
+    window.setInterval(spawnExtraFood, 30000);
     window.setInterval(spawnClouds1, 42000);
 
     function updateNicknames() {
@@ -248,9 +248,9 @@
       }
     }
 
-    function spawnExtraLife() {
-      { document.getElementById('extraLife').style.left = (Math.floor(Math.random() * (950 - 360 + 1) + 360)) + 'px'}
-      $('#extraLife').animate({top: '+=375'}, 2000);
+    function spawnExtraFood() {
+      { document.getElementById('extraFood').style.left = (Math.floor(Math.random() * (950 - 360 + 1) + 360)) + 'px'}
+      $('#extraFood').animate({top: '+=375'}, 2000);
     }
 
     function spawnClouds1() {
@@ -410,11 +410,11 @@
           updateWornAccessories()
         } else {
           bird1.respawn();
-          bird1.decreaseLifeCount();
+          bird1.decreaseFoodCount();
           { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
           { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
           updateWornAccessories();
-          $('#lifeText1').text(bird1.lifeCount)
+          $('#foodText1').text(bird1.foodCount)
           checkIfGameOver()
         }
       }
@@ -425,9 +425,9 @@
       var raindropCollisionX = (bird1.x < Number((document.getElementById(raindrop).style.left.slice(0, -2))) + Number(15)) && (bird1.x > Number((document.getElementById(raindrop).style.left.slice(0, -2))) - Number(80))
       if (raindropCollisionX && raindropCollisionY) {
         if (!bird1.coolDown) {
-          bird1.decreaseLifeCount();
+          bird1.decreaseFoodCount();
           bird1.coolDownOn();
-          $('#lifeText1').text(bird1.lifeCount);
+          $('#foodText1').text(bird1.foodCount);
           checkIfGameOver();
           displayExclamationPoint();
           updateExclamationPoint();
@@ -440,9 +440,9 @@
       var rocketCollisionX = (bird1.x < Number((document.getElementById('rocket').style.left.slice(0, -2))) + Number(35)) && (bird1.x > Number((document.getElementById('rocket').style.left.slice(0, -2))) - Number(100))
       if (rocketCollisionX && rocketCollisionY) {
         if (!bird1.coolDown) {
-          bird1.decreaseLifeCount();
+          bird1.decreaseFoodCount();
           bird1.coolDownOn();
-          $('#lifeText1').text(bird1.lifeCount);
+          $('#foodText1').text(bird1.foodCount);
           checkIfGameOver();
           displayExclamationPoint();
           updateExclamationPoint();
@@ -450,13 +450,13 @@
       }
     }
 
-    function extraLifeCollision() {
-      var extraLifeCollisionY = bird1.y <= Number((document.getElementById('extraLife').style.top.slice(0, -2))) + Number(65)
-      var extraLifeCollisionX = (bird1.x < Number((document.getElementById('extraLife').style.left.slice(0, -2))) + Number(25)) && (bird1.x > Number((document.getElementById('extraLife').style.left.slice(0, -2))) - Number(90))
-      if (extraLifeCollisionX && extraLifeCollisionY) {
-        bird1.increaseLifeCount();
-        $('#lifeText1').text(bird1.lifeCount);
-        { document.getElementById('extraLife').style.top = -30 + 'px'}
+    function extraFoodCollision() {
+      var extraFoodCollisionY = bird1.y <= Number((document.getElementById('extraFood').style.top.slice(0, -2))) + Number(65)
+      var extraFoodCollisionX = (bird1.x < Number((document.getElementById('extraFood').style.left.slice(0, -2))) + Number(25)) && (bird1.x > Number((document.getElementById('extraFood').style.left.slice(0, -2))) - Number(90))
+      if (extraFoodCollisionX && extraFoodCollisionY) {
+        bird1.increaseFoodCount();
+        $('#foodText1').text(bird1.foodCount);
+        { document.getElementById('extraFood').style.top = -30 + 'px'}
       }
     }
 
@@ -490,7 +490,7 @@
       switch (ch.toLowerCase()) {
         case 'e':
           accessoryCollision();
-          extraLifeCollision();
+          extraFoodCollision();
           break;
         case 'a':
           bird1.moveLeft();
