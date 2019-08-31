@@ -3,18 +3,18 @@
   <head>
     <meta charset="utf-8">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="./Players.js"></script>
-    <script src="./Bird.js"></script>
-    <script src="./Accessory.js"></script>
+    <script src="../lib/Players.js"></script>
+    <script src="../lib/Bird.js"></script>
+    <script src="../lib/Accessory.js"></script>
     <title>Bird Game</title>
   </head>
   <body class="background-image">
     <div><span id="timer"><span></div>
-    <img id="player1Card" src="playerCard.png" alt="Player 1 Card"/>
+    <img id="player1Card" src="../images/playerCard.png" alt="Player 1 Card"/>
     <br>
-    <img id="player2Card" src="playerCard.png" alt="Player 2 Card"/>
+    <img id="player2Card" src="../images/playerCard.png" alt="Player 2 Card"/>
     <br>
-    <img id="player3Card" src="playerCard.png" alt="Player 3 Card"/>
+    <img id="player3Card" src="../images/playerCard.png" alt="Player 3 Card"/>
     <div class="player1Text">
       <span id="name1"></span>
       <span id="foodText1">5</span>
@@ -34,26 +34,26 @@
       <span id="accessory23">EMPTY<span>
     </div>
     <div id="bird1-img">
-      <img id="bird1" src="leftGroundBird.png" alt="Bird 1"/>
+      <img id="bird1" src="../images/leftGroundBird.png" alt="Bird 1"/>
     </div>
-    <img id="cloudPlatform" src="cloudPlatform.png" alt="Cloud Platform"/>
-    <div><img id="clouds1" src="clouds1.png" alt="Background Clouds"/></div>
-    <div><img id="clouds2" src="clouds2.png" alt="Background Clouds"/></div>
+    <img id="cloudPlatform" src="../images/cloudPlatform.png" alt="Cloud Platform"/>
+    <div><img id="clouds1" src="../images/clouds1.png" alt="Background Clouds"/></div>
+    <div><img id="clouds2" src="../images/clouds2.png" alt="Background Clouds"/></div>
     <div><span id="exclamation-point-bird1"><span></div>
     <div><span id="saucepan"><span></div>
     <div><span id="bowtie"><span></div>
-    <div><img id="extraFood" src="extraFood.png" alt="Extra Food"/></div>
-    <div><img id="rocket" src="rocket.png" alt="Rocket"/></div>
-    <div><img id="raindrop1" src="rainDrop.png" alt="Rain Drop"/></div>
-    <div><img id="raindrop2" src="rainDrop.png" alt="Rain Drop"/></div>
-    <div><img id="raindrop3" src="rainDrop.png" alt="Rain Drop"/></div>
-    <div><img id="raindrop4" src="rainDrop.png" alt="Rain Drop"/></div>
+    <div><img id="extraFood" src="../images/berry.png" alt="Extra Food"/></div>
+    <div><img id="rocket" src="../images/rocket.png" alt="Rocket"/></div>
+    <div><img id="raindrop1" src="../images/rainDrop.png" alt="Rain Drop"/></div>
+    <div><img id="raindrop2" src="../images/rainDrop.png" alt="Rain Drop"/></div>
+    <div><img id="raindrop3" src="../images/rainDrop.png" alt="Rain Drop"/></div>
+    <div><img id="raindrop4" src="../images/rainDrop.png" alt="Rain Drop"/></div>
   </body>
 </html>
 
 <style>
   .background-image {
-    background-image: url("background.png");
+    background-image: url("../images/background.png");
 	  background-size: cover;
   }
   .player1Text, .player2Text, .player3Text {
@@ -319,7 +319,7 @@
 
     function updateExclamationPoint() {
       $('#exclamation-point-bird1').text('');
-      $('#exclamation-point-bird1').prepend('<img src="exclamation.png" />');
+      $('#exclamation-point-bird1').prepend('<img src="../images/exclamation.png" />');
       { document.getElementById('exclamation-point-bird1').style.left = (bird1.x + 30) + 'px'}
       { document.getElementById('exclamation-point-bird1').style.top = (bird1.y - 70) + 'px'}
     }
@@ -343,14 +343,14 @@
           if (accessory.name === 'saucepan') {
             $('#saucepan').text('')
             if (right) {
-              $('#saucepan').prepend('<img src="saucepanRight.png" />')
+              $('#saucepan').prepend('<img src="../images/saucepanRight.png" />')
               if (jumping) {
                 { document.getElementById('saucepan').style.left = (bird1.x - 12) + 'px'}
               } else {
                 { document.getElementById('saucepan').style.left = (bird1.x - 20) + 'px'}
               }
             } else {
-              $('#saucepan').prepend('<img src="saucepanLeft.png" />')
+              $('#saucepan').prepend('<img src="../images/saucepanLeft.png" />')
               { document.getElementById('saucepan').style.left = (bird1.x + 10) + 'px'}
             }
             { document.getElementById('saucepan').style.top = (bird1.y - 12) + 'px'}
@@ -358,10 +358,10 @@
           if(accessory.name === 'bowtie') {
             $('#bowtie').text('')
             if (right) {
-              $('#bowtie').prepend('<img src="bowtieRight.png" />')
+              $('#bowtie').prepend('<img src="../images/bowtieRight.png" />')
               { document.getElementById('bowtie').style.left = (bird1.x + 42) + 'px'}
             } else {
-              $('#bowtie').prepend('<img src="bowtieLeft.png" />')
+              $('#bowtie').prepend('<img src="../images/bowtieLeft.png" />')
               { document.getElementById('bowtie').style.left = (bird1.x + 10) + 'px'}
             }
             { document.getElementById('bowtie').style.top = (bird1.y + 48) + 'px'}
@@ -373,11 +373,11 @@
     function displayAccessoriesOnGround() {
       if (saucepan) {
         $('#saucepan').text('')
-        $('#saucepan').prepend('<img src="saucepanLeft.png" />')
+        $('#saucepan').prepend('<img src="../images/saucepanLeft.png" />')
       }
       if (bowtie) {
         $('#bowtie').text('')
-        $('#bowtie').prepend('<img src="bowtieLeft.png" />')
+        $('#bowtie').prepend('<img src="../images/bowtieLeft.png" />')
       }
     }
 
@@ -464,13 +464,13 @@
         $('#exclamation-point-bird1').text('');
       }
       if (right && jumping) {
-        $('#bird1').attr("src", "rightJumpBird.png");
+        $('#bird1').attr("src", "../images/rightJumpBird.png");
       } else if (right) {
-        $('#bird1').attr("src", "rightGroundBird.png");
+        $('#bird1').attr("src", "../images/rightGroundBird.png");
       } else if (!right && jumping) {
-        $('#bird1').attr("src", "leftJumpBird.png");
+        $('#bird1').attr("src", "../images/leftJumpBird.png");
       } else if (!right) {
-        $('#bird1').attr("src", "leftGroundBird.png");
+        $('#bird1').attr("src", "../images/leftGroundBird.png");
       }
       updateWornAccessories();
     }
@@ -503,14 +503,14 @@
           break;
         case 'w':
           if (!jumping) {
-            $('#bird1').attr("src", "rightJumpBird.png");
+            $('#bird1').attr("src", "../images/rightJumpBird.png");
             jump();
             { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
           }
           break;
         case ' ':
           if (!jumping) {
-            $('#bird1').attr("src", "rightJumpBird.png");
+            $('#bird1').attr("src", "../images/rightJumpBird.png");
             jump();
             { document.getElementById('bird1-img').style.top = bird1.y + 'px'}
           }

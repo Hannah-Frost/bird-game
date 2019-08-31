@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="./Players.js"></script>
-    <script src="./Bird.js"></script>
     <title>Waiting for Players...</title>
   </head>
   <body class="background-image">
@@ -13,9 +11,9 @@
       <img src="selectionHeader.png" alt="Selection Header"/>
     </div>
     <center><div class="playersInfo">
-      <img src="playerInfo.png" alt="Player 1 Information"/>
-      <img src="playerInfo.png" alt="Player 2 Information"/>
-      <img src="playerInfo.png" alt="Player 3 Information"/>
+      <img src="../images/playerInfo.png" alt="Player 1 Information"/>
+      <img src="../images/playerInfo.png" alt="Player 2 Information"/>
+      <img src="../images/playerInfo.png" alt="Player 3 Information"/>
       <span id="player1name">Player 1</span>
       <span id="player2name">Player 2</span>
       <span id="player3name">Player 3</span>
@@ -45,7 +43,7 @@
 
 <style>
   .background-image {
-    background-image: url("background.png");
+    background-image: url("../images/background.png");
 	  background-size: cover;
   }
   .playersInfo {
