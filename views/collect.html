@@ -42,7 +42,7 @@
     <div><span id="exclamation-point-bird1"><span></div>
     <div><span id="saucepan"><span></div>
     <div><span id="bowtie"><span></div>
-    <div><img id="extraFood" src="../images/berry.png" alt="Extra Food"/></div>
+    <div><span id="item"><span></div>
     <div><img id="rocket" src="../images/rocket.png" alt="Rocket"/></div>
     <div><img id="raindrop1" src="../images/rainDrop.png" alt="Rain Drop"/></div>
     <div><img id="raindrop2" src="../images/rainDrop.png" alt="Rain Drop"/></div>
@@ -141,10 +141,10 @@
     left: 880px;
     top: 355px;
   }
-  #extraFood {
+  #item {
     position: absolute;
     left: 0px;
-    top: -30px;
+    top: -50px;
   }
   #timer {
     position: absolute;
@@ -203,7 +203,7 @@
     window.setInterval(raindropCollision, 300, 'raindrop3');
     window.setInterval(raindropCollision, 300, 'raindrop4');
     window.setInterval(rocketCollision, 300);
-    window.setInterval(spawnExtraFood, 30000);
+    window.setInterval(spawnItem, 10000);
     window.setInterval(spawnClouds1, 42000);
 
     function updateNicknames() {
@@ -228,6 +228,10 @@
       direction()
     }
 
+    function select(array) {
+      return '<img src="../images/' + array[Math.floor ( Math.random() * array.length )] + '.png" />'
+    }
+
     function startTimer() {
       setTimeout($('#timer').text("Better start collecting..."), 100)
       setTimeout(spawnRocket, 10000)
@@ -245,9 +249,16 @@
       }
     }
 
-    function spawnExtraFood() {
-      { document.getElementById('extraFood').style.left = (Math.floor(Math.random() * (950 - 360 + 1) + 360)) + 'px'}
-      $('#extraFood').animate({top: '+=375'}, 2000);
+    function spawnItem() {
+      { document.getElementById('item').style.left = (Math.floor(Math.random() * (950 - 360 + 1) + 360)) + 'px'}
+      $('#item').text('');
+      $('#item').prepend(select(['Berry', 'Twig', 'Flower', 'Feather', 'Coin']));
+      $('#item').animate({top: '+=375'}, 2000);
+      setTimeout(despawnItem, 5000);
+    }
+
+    function despawnItem() {
+      { document.getElementById('item').style.top = -50 + 'px'}
     }
 
     function spawnClouds1() {
@@ -447,13 +458,13 @@
       }
     }
 
-    function extraFoodCollision() {
-      var extraFoodCollisionY = bird1.y <= Number((document.getElementById('extraFood').style.top.slice(0, -2))) + Number(65)
-      var extraFoodCollisionX = (bird1.x < Number((document.getElementById('extraFood').style.left.slice(0, -2))) + Number(25)) && (bird1.x > Number((document.getElementById('extraFood').style.left.slice(0, -2))) - Number(90))
-      if (extraFoodCollisionX && extraFoodCollisionY) {
+    function itemCollision() {
+      var itemCollisionY = bird1.y <= Number((document.getElementById('item').style.top.slice(0, -2))) + Number(65)
+      var itemCollisionX = (bird1.x < Number((document.getElementById('item').style.left.slice(0, -2))) + Number(25)) && (bird1.x > Number((document.getElementById('item').style.left.slice(0, -2))) - Number(90))
+      if (itemCollisionX && itemCollisionY) {
         bird1.increaseFoodCount();
         $('#foodText1').text(bird1.foodCount);
-        { document.getElementById('extraFood').style.top = -30 + 'px'}
+        { document.getElementById('item').style.top = -50 + 'px'}
       }
     }
 
@@ -487,7 +498,7 @@
       switch (ch.toLowerCase()) {
         case 'e':
           accessoryCollision();
-          extraFoodCollision();
+          itemCollision();
           break;
         case 'a':
           bird1.moveLeft();
