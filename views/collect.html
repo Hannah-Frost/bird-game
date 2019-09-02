@@ -462,9 +462,15 @@
       var itemCollisionY = bird1.y <= Number((document.getElementById('item').style.top.slice(0, -2))) + Number(65)
       var itemCollisionX = (bird1.x < Number((document.getElementById('item').style.left.slice(0, -2))) + Number(25)) && (bird1.x > Number((document.getElementById('item').style.left.slice(0, -2))) - Number(90))
       if (itemCollisionX && itemCollisionY) {
+        addItem($('#item > img').attr('src').split('/')[2].split('.')[0]);
+        { document.getElementById('item').style.top = -50 + 'px'}
+      }
+    }
+
+    function addItem(item) {
+      if (item === "Berry") {
         bird1.increaseFoodCount();
         $('#foodText1').text(bird1.foodCount);
-        { document.getElementById('item').style.top = -50 + 'px'}
       }
     }
 
