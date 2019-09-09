@@ -183,6 +183,7 @@
 <script>
   $(document).ready(function() {
     var bird1 = new Bird();
+    var inventory = new Inventory();
     var saucepan = true;
     var bowtie = true;
     var jumping = false;
@@ -467,10 +468,8 @@
     }
 
     function addItem(item) {
-      if (item === "Berry") {
-        bird1.increaseFoodCount();
-        $('#foodText1').text(bird1.foodCount);
-      }
+      inventory.increaseItem(item);
+      $('#foodText1').text(bird1.foodCount);
     }
 
     function direction() {
