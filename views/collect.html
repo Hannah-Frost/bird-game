@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="../lib/Bird.js"></script>
     <script src="../lib/Accessory.js"></script>
+    <script src="../lib/Bird.js"></script>
+    <script src="../lib/Inventory.js"></script>
     <title>Bird Game</title>
   </head>
   <body class="background-image">
@@ -213,6 +214,7 @@
     }
 
     function jump() {
+      console.log(inventory.show())
       if (!jumping) {
         jumping = true;
         bird1.jump();
@@ -252,7 +254,7 @@
     function spawnItem() {
       { document.getElementById('item').style.left = (Math.floor(Math.random() * (950 - 360 + 1) + 360)) + 'px'}
       $('#item').text('');
-      $('#item').prepend(select(['Berry', 'Twig', 'Flower', 'Feather', 'Coin']));
+      $('#item').prepend(select(['berry', 'twig', 'flower', 'feather', 'coin']));
       $('#item').animate({top: '+=375'}, 2000);
       setTimeout(despawnItem, 5000);
     }
