@@ -33,6 +33,13 @@
       <span id="accessory13">EMPTY<span>
       <span id="accessory23">EMPTY<span>
     </div>
+    <div class="inventory">
+      <div><span id="berry"><span></div>
+      <div><span id="coin"><span></div>
+      <div><span id="feather"><span></div>
+      <div><span id="flower"><span></div>
+      <div><span id="twig"><span></div>
+    </div>
     <div id="bird1-img">
       <img id="bird1" src="../images/leftGroundBird.png" alt="Bird 1"/>
     </div>
@@ -61,6 +68,9 @@
     margin-left: 25px;
     margin-top: -385px;
     font-family: verdana;
+  }
+  .inventory {
+    margin-left: 100px;
   }
   #player1Card, #player2Card, #player3Card {
     margin-top: 10px;
@@ -194,6 +204,7 @@
         if(count == 1) clearInterval(timer);
     }, 1000);
     updateNicknames();
+    updateInventory();
     spawnClouds1();
     displayAccessoriesOnGround();
     startTimer();
@@ -214,7 +225,6 @@
     }
 
     function jump() {
-      console.log(inventory.show())
       if (!jumping) {
         jumping = true;
         bird1.jump();
@@ -328,6 +338,14 @@
       if (bird1.coolDown) {
         setTimeout(startCoolDownTimer, 2000);
       }
+    }
+
+    function updateInventory() {
+      $('#berry').text(inventory.show('berry'))
+      $('#coin').text(inventory.show('coin'))
+      $('#feather').text(inventory.show('feather'))
+      $('#flower').text(inventory.show('flower'))
+      $('#twig').text(inventory.show('twig'))
     }
 
     function updateExclamationPoint() {
@@ -466,6 +484,7 @@
       if (itemCollisionX && itemCollisionY) {
         addItem($('#item > img').attr('src').split('/')[2].split('.')[0]);
         { document.getElementById('item').style.top = -50 + 'px'}
+        updateInventory();
       }
     }
 
