@@ -512,9 +512,14 @@
     }
 
     function checkIfGameOver() {
-      if (bird1.gameOver) {
+      if ($('#timer').text < 55) {
+        saveItems();
         window.location.href='end.html'
       }
+    }
+
+    function saveItems() {
+      sessionStorage.setItem('item', inventory);
     }
 
     $(document).keypress(function(event){
