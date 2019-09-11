@@ -201,7 +201,10 @@
     var right = false;
     var count = 60, timer = setInterval(function() {
         $("#timer").html(count--);
-        if(count == 1) clearInterval(timer);
+        if(count == 0) {
+          clearInterval(timer);
+          endGame();
+        }
     }, 1000);
     updateNicknames();
     updateInventory();
@@ -255,9 +258,6 @@
         setTimeout(spawnRaindrops, spawnTime)
         spawnTime += 3000
         i++;
-        if (i === 10) {
-          setTimeout(startTimer, 50000)
-        }
       }
     }
 
@@ -443,7 +443,6 @@
           { document.getElementById('bird1-img').style.left = bird1.x + 'px'}
           updateWornAccessories();
           $('#foodText1').text(bird1.foodCount)
-          checkIfGameOver()
         }
       }
     }
@@ -456,7 +455,6 @@
           bird1.decreaseFoodCount();
           bird1.coolDownOn();
           $('#foodText1').text(bird1.foodCount);
-          checkIfGameOver();
           displayExclamationPoint();
           updateExclamationPoint();
         }
@@ -471,7 +469,6 @@
           bird1.decreaseFoodCount();
           bird1.coolDownOn();
           $('#foodText1').text(bird1.foodCount);
-          checkIfGameOver();
           displayExclamationPoint();
           updateExclamationPoint();
         }
@@ -511,11 +508,9 @@
       updateWornAccessories();
     }
 
-    function checkIfGameOver() {
-      if ($('#timer').text < 55) {
-        saveItems();
-        window.location.href='end.html'
-      }
+    function endGame() {
+      saveItems();
+      window.location.href='game.html'
     }
 
     function saveItems() {
