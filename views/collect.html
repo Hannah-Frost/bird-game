@@ -514,7 +514,7 @@
     }
 
     function saveItems() {
-      sessionStorage.setItem('item', inventory);
+      sessionStorage.setItem('items', JSON.stringify(inventory));
     }
 
     $(document).keypress(function(event){

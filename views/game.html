@@ -3,26 +3,37 @@
   <head>
     <meta charset="utf-8">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../lib/Inventory.js"></script>
     <title>Bird Game</title>
   </head>
   <body>
     <div class="inventory">
-      <span id="foodCount">0</span>
       <img id="foodImage" src="../images/berry.png" alt="Food"/>
-      <span id="flowerCount">0</span>
-      <img id="flowerImage" src="../images/flower.png" alt="Flower"/>
-      <span id="featherCount">0</span>
-      <img id="featherImage" src="../images/feather.png" alt="Feather"/>
-      <span id="twigCount">0</span>
-      <img id="twigImage" src="../images/twig.png" alt="Twig"/>
-      <span id="coinCount">0</span>
+      <div>Berries : <span id="berry"><span></div>
       <img id="coinImage" src="../images/coin.png" alt="Coin"/>
+      <div>Coins : <span id="coin"><span></div>
+      <img id="featherImage" src="../images/feather.png" alt="Feather"/>
+      <div>Feathers : <span id="feather"><span></div>
+      <img id="flowerImage" src="../images/flower.png" alt="Flower"/>
+      <div>Flowers : <span id="flower"><span></div>
+      <img id="twigImage" src="../images/twig.png" alt="Twig"/>
+      <div>Twigs : <span id="twig"><span></div>
     </div>
   </body>
 </html>
 
-<style>
-</style>
-
 <script>
+  $(document).ready(function() {
+    console.log(JSON.parse(sessionStorage.getItem('items')));
+    var inventory = JSON.parse(sessionStorage.getItem('items'));
+    updateInventory();
+
+    function updateInventory() {
+      $('#berry').text(inventory.berry)
+      $('#coin').text(inventory.coin)
+      $('#feather').text(inventory.feather)
+      $('#flower').text(inventory.flower)
+      $('#twig').text(inventory.twig)
+    };
+  });
 </script>
