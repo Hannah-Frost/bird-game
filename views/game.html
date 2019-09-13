@@ -7,6 +7,7 @@
     <title>Bird Game</title>
   </head>
   <body>
+    <div class="dayText">Day <span id="day"></span></div>
     <div class="inventory">
       <img id="foodImage" src="../images/berry.png" alt="Food"/>
       <div class="item"><span id="berry"><span></div>
@@ -23,6 +24,10 @@
 </html>
 
 <style>
+  .dayText {
+    font-family: verdana;
+    font-size: 44px;
+  }
   .item {
     display: inline-block;
     font-family: verdana;
@@ -33,9 +38,14 @@
 
 <script>
   $(document).ready(function() {
-    console.log(JSON.parse(sessionStorage.getItem('items')));
+    var day = 1;
     var inventory = JSON.parse(sessionStorage.getItem('items'));
+    updateDay();
     updateInventory();
+
+    function updateDay() {
+      $('#day').text(day)
+    };
 
     function updateInventory() {
       $('#berry').text(inventory.berry)
