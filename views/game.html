@@ -4,10 +4,12 @@
     <meta charset="utf-8">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="../lib/Inventory.js"></script>
+    <script src="../lib/Scenario.js"></script>
     <title>Bird Game</title>
   </head>
   <body>
     <div class="dayText">Day <span id="day"></span></div>
+    <div class="scenario"><span id="scenario"></span></div>
     <div class="inventory">
       <img id="foodImage" src="../images/berry.png" alt="Food"/>
       <div class="item"><span id="berry"><span></div>
@@ -39,9 +41,11 @@
 <script>
   $(document).ready(function() {
     var day = 1;
+    var scenario = new Scenario();
     var inventory = JSON.parse(sessionStorage.getItem('items'));
     updateDay();
     updateInventory();
+    updateScenario();
 
     function updateDay() {
       $('#day').text(day)
@@ -54,5 +58,9 @@
       $('#flower').text(inventory.flower)
       $('#twig').text(inventory.twig)
     };
+
+    function updateScenario() {
+      $('#scenario').text(scenario.selectEarlyScenario().text);
+    }
   });
 </script>
