@@ -7,31 +7,56 @@
     <script src="../lib/Scenario.js"></script>
     <title>Bird Game</title>
   </head>
-  <body>
-    <div class="dayText">Day <span id="day"></span></div>
-    <div class="scenario"><span id="scenario"></span></div>
+  <body class="background-image">
+    <div class="summary">
+      <div class="dayText">Day <span id="day"></span></div>
+      <div class="scenarioText"><span id="scenario"></span></div>
+    </div>
     <div class="inventory">
-      <img id="foodImage" src="../images/berry.png" alt="Food"/>
-      <div class="item"><span id="berry"><span></div>
-      <img id="coinImage" src="../images/coin.png" alt="Coin"/>
-      <div class="item"><span id="coin"><span></div>
-      <img id="featherImage" src="../images/feather.png" alt="Feather"/>
-      <div class="item"><span id="feather"><span></div>
-      <img id="flowerImage" src="../images/flower.png" alt="Flower"/>
-      <div class="item"><span id="flower"><span></div>
-      <img id="twigImage" src="../images/twig.png" alt="Twig"/>
-      <div class="item"><span id="twig"><span></div>
+      <div class="item">
+        <img id="foodImage" src="../images/berry.png" alt="Food"/>
+        <span class="itemAmount" id="berry"><span>
+      </div>
+      <div class="item">
+        <img id="coinImage" src="../images/coin.png" alt="Coin"/>
+        <span class="itemAmount" id="coin"><span>
+      </div>
+      <div class="item">
+        <img id="featherImage" src="../images/feather.png" alt="Feather"/>
+        <span class="itemAmount" id="feather"><span>
+      </div>
+      <div class="item">
+        <img id="flowerImage" src="../images/flower.png" alt="Flower"/>
+        <span class="itemAmount" id="flower"><span>
+      </div>
+      <div class="item">
+        <img id="twigImage" src="../images/twig.png" alt="Twig"/>
+        <span class="itemAmount" id="twig"><span>
+      </div>
     </div>
   </body>
 </html>
 
 <style>
-  .dayText {
+  .background-image {
+    background-image: url("../images/background.png");
+    background-size: cover;
+  }
+  .summary {
+    background-color: #FFF;
     font-family: verdana;
+    padding: 20px;
+  }
+  .dayText {
     font-size: 44px;
+  }
+  .scenarioText {
+    font-size: 24px;
   }
   .item {
     display: inline-block;
+  }
+  .itemAmount {
     font-family: verdana;
     font-size: 24px;
     margin-right: 20px;
