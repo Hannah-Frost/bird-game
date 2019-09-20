@@ -10,7 +10,8 @@
   <body class="background-image">
     <div class="summary">
       <div class="dayText">Day <span id="day"></span></div>
-      <div class="scenarioText"><span id="scenario"></span></div>
+      <div class="scenarioText"><span id="scenarioText"></span></div>
+      <span id="scenarioOptions"></span>
     </div>
     <div class="inventory">
       <div class="item">
@@ -95,7 +96,9 @@
     };
 
     function updateScenario() {
-      $('#scenario').text(scenario.selectEarlyScenario().text);
+      var newScenario = scenario.selectEarlyScenario();
+      $('#scenarioText').text(newScenario.text);
+      $('#scenarioOptions').text(newScenario.options);
     }
   });
 </script>
