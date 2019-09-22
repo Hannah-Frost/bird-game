@@ -12,6 +12,8 @@
       <div class="dayText">Day <span id="day"></span></div>
       <div class="scenarioText"><span id="scenarioText"></span></div>
       <span id="scenarioOptions"></span>
+      <span id="optionA"></span>
+      <span id="optionB"></span>
     </div>
     <div class="inventory">
       <div class="item">
@@ -100,6 +102,16 @@
       var newScenario = scenario.selectEarlyScenario();
       $('#scenarioText').text(newScenario.text);
       $('#scenarioOptions').text(newScenario.options);
-    }
+      setOptionImage(newScenario.options);
+    };
+
+    function setOptionImage(options) {
+      optionA = options[0]
+      optionB = options[1]
+      $('#optionA').text('');
+      $('#optionB').text('');
+      $('#optionA').prepend('<img src="../images/' + optionA + '.png" />');
+      $('#optionB').prepend('<img src="../images/' + optionB + '.png" />');
+    };
   });
 </script>
