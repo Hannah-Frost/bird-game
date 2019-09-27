@@ -12,10 +12,10 @@
       <div class="dayText">Day <span id="day"></span></div>
       <div class="scenarioText"><span id="scenarioText"></span></div>
       <span id="optionA"></span>
-      <input type="Radio" name="choice" id="choiceA" onclick="" value="OptionA">Option A
+      <input type="Radio" name="choice" id="choiceA" onclick="sessionStorage.setItem('choice', $('input[id=choiceA]').val());" value="OptionA">Option A
       <span id="optionB"></span>
-      <input type="Radio" name="choice" id="choiceB" onclick="" value="OptionB">Option B
-      <input type="Radio" name="choice" value="Nothing" onclick="" checked>Nothing
+      <input type="Radio" name="choice" id="choiceB" onclick="sessionStorage.setItem('choice', $('input[id=choiceB]').val());" value="OptionB">Option B
+      <input type="Radio" name="choice" id="choiceC" onclick="sessionStorage.setItem('choice', $('input[id=choiceC]').val());" value="Nothing" checked>Nothing
     </div>
     <div class="inventory">
       <div class="item">
@@ -111,6 +111,16 @@
     function setChecklist(options) {
       $('input[id=choiceA]').val(options[0]);
       $('input[id=choiceB]').val(options[1]);
+    };
+
+    function saveChoice(choice) {
+      if ( choice === 'A' ) {
+        sessionStorage.setItem('choice', $('input[id=choiceA]').val());
+      } else if ( choice === 'B' ) {
+        sessionStorage.setItem('choice', $('input[id=choiceB]').val());
+      } else {
+        sessionStorage.setItem('choice', $('input[id=choiceC]').val());
+      }
     };
 
     function setOptionImage(options) {
