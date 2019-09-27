@@ -12,10 +12,10 @@
       <div class="dayText">Day <span id="day"></span></div>
       <div class="scenarioText"><span id="scenarioText"></span></div>
       <span id="optionA"></span>
-      <INPUT TYPE="Radio" Name="choice" onclick="" Value="OptionA">Option A
+      <input type="Radio" name="choice" id="choiceA" onclick="" value="OptionA">Option A
       <span id="optionB"></span>
-      <INPUT TYPE="Radio" Name="choice" onclick="" Value="OptionB">Option B
-      <INPUT TYPE="Radio" Name="choice" onclick="" Value="Nothing" Checked>Nothing
+      <input type="Radio" name="choice" id="choiceB" onclick="" value="OptionB">Option B
+      <input type="Radio" name="choice" value="Nothing" onclick="" checked>Nothing
     </div>
     <div class="inventory">
       <div class="item">
@@ -105,12 +105,13 @@
       var newScenario = scenario.selectEarlyScenario();
       $('#scenarioText').text(newScenario.text);
       setOptionImage(newScenario.options);
+      setChecklist(newScenario.options);
     };
 
     function setChecklist(options) {
-      $('input[value=choiceA]').val(options[0]);
-      $('input[value=choiceB]').val(options[1]);
-    }
+      $('input[id=choiceA]').val(options[0]);
+      $('input[id=choiceB]').val(options[1]);
+    };
 
     function setOptionImage(options) {
       $('#optionA').text('');
