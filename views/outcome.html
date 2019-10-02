@@ -2,8 +2,24 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../lib/Inventory.js"></script>
+    <script src="../lib/Scenario.js"></script>
     <title>Outcome</title>
   </head>
   <body>
+    <span id="outcomeText">123</span>
   </body>
 </html>
+
+<script>
+  $(document).ready(function() {
+    var choice = JSON.parse(sessionStorage.getItem('choice'));
+    var inventory = JSON.parse(sessionStorage.getItem('items'));
+    updateChoice();
+
+    function updateChoice() {
+      $('#outcomeText').text(choice[1]);
+    };
+  });
+</script>

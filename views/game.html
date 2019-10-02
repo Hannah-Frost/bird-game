@@ -12,10 +12,10 @@
       <div class="dayText">Day <span id="day"></span></div>
       <div class="scenarioText"><span id="scenarioText"></span></div>
       <span id="optionA"></span>
-      <input type="Radio" name="choice" id="choiceA" onclick="sessionStorage.setItem('choice', $('input[id=choiceA]').val());" value="OptionA">Option A
+      <input type="Radio" name="choice" id="choiceA" value="OptionA">Option A
       <span id="optionB"></span>
-      <input type="Radio" name="choice" id="choiceB" onclick="sessionStorage.setItem('choice', $('input[id=choiceB]').val());" value="OptionB">Option B
-      <input type="Radio" name="choice" id="choiceC" onclick="sessionStorage.setItem('choice', $('input[id=choiceC]').val());" value="nothing" checked>Nothing
+      <input type="Radio" name="choice" id="choiceB" value="OptionB">Option B
+      <input type="Radio" name="choice" id="choiceC" value="nothing" checked>Nothing
       <button onclick="window.location.href='outcome.html'">Next Day ---></button>
     </div>
     <div class="inventory">
@@ -85,10 +85,15 @@
   $(document).ready(function() {
     var day = 1;
     var scenario = new Scenario();
+    var newScenario = scenario.selectEarlyScenario();
     var inventory = JSON.parse(sessionStorage.getItem('items'));
     updateDay();
     updateInventory();
     updateScenario();
+
+    document.getElementById("choiceA").onclick = function() {saveChoice($('input[id=choiceA]').val())}
+    document.getElementById("choiceB").onclick = function() {saveChoice($('input[id=choiceB]').val())}
+    document.getElementById("choiceC").onclick = function() {saveChoice($('input[id=choiceC]').val())}
 
     function updateDay() {
       $('#day').text(day)
@@ -103,7 +108,6 @@
     };
 
     function updateScenario() {
-      var newScenario = scenario.selectEarlyScenario();
       $('#scenarioText').text(newScenario.text);
       setOptionImage(newScenario.options);
       setChecklist(newScenario.options);
@@ -115,12 +119,17 @@
     };
 
     function saveChoice(choice) {
-      if ( choice === 'A' ) {
-        sessionStorage.setItem('choice', $('input[id=choiceA]').val());
-      } else if ( choice === 'B' ) {
-        sessionStorage.setItem('choice', $('input[id=choiceB]').val());
-      } else {
-        sessionStorage.setItem('choice', $('input[id=choiceC]').val());
+      if ( choice === 'berry' ) {
+        sessionStorage.setItem('choice', JSON.stringify(newScenario.choice.berry));
+        console.log(newScenario.choice.berry)
+      } else if ( choice === 'coin' ) {
+        sessionStorage.setItem('choice', JSON.stringify(newScenario.choice.coin));
+      } else if ( choice === 'feather' ) {
+        sessionStorage.setItem('choice', JSON.stringify(newScenario.choice.feather));
+      } else if ( choice === 'flower' ) {
+        sessionStorage.setItem('choice',JSON.stringify(newScenario.choice.flower));
+      } else if ( choice === 'twig' ) {
+        sessionStorage.setItem('choice', JSON.stringify(newScenario.choice.twig));
       }
     };
 
