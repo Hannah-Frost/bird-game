@@ -87,6 +87,7 @@
     var scenario = new Scenario();
     var newScenario = scenario.selectEarlyScenario();
     var inventory = JSON.parse(sessionStorage.getItem('items'));
+    saveChoice($('input[id=choiceC]').val());
     updateDay();
     updateInventory();
     updateScenario();
@@ -121,7 +122,6 @@
     function saveChoice(choice) {
       if ( choice === 'berry' ) {
         sessionStorage.setItem('choice', JSON.stringify(newScenario.choice.berry));
-        console.log(newScenario.choice.berry)
       } else if ( choice === 'coin' ) {
         sessionStorage.setItem('choice', JSON.stringify(newScenario.choice.coin));
       } else if ( choice === 'feather' ) {
@@ -130,6 +130,8 @@
         sessionStorage.setItem('choice',JSON.stringify(newScenario.choice.flower));
       } else if ( choice === 'twig' ) {
         sessionStorage.setItem('choice', JSON.stringify(newScenario.choice.twig));
+      } else {
+        sessionStorage.setItem('choice', JSON.stringify(newScenario.choice.nothing));
       }
     };
 
