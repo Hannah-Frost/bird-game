@@ -9,8 +9,13 @@
   </head>
   <body class="background-image">
     <div class="summary">
-      <div class="dayText">Day <span id="day"></span></div>
-      <div class="scenarioText"><span id="scenarioText"></span></div>
+      <strong class="dayText">Day <span id="day"></span></strong>
+      <div class="scenarioText">
+        <span id="scenarioDesc"></span>
+        <br>
+        <br>
+        <strong>What will you use?</strong>
+      </div>
       <span id="optionA"></span>
       <span id="optionB"></span>
       <img src="../images/nothing.png" alt="Nothing Option"/>
@@ -58,19 +63,20 @@
     border-width: 4px 20px 4px 20px;
     border-radius: 10px;
     font-family: verdana;
-    padding: 20px;
-    margin: 20px;
+    padding: 12px;
+    margin: 10px;
   }
   .tickbox {
     height: 40px;
     width: 45px;
   }
   .dayText {
-    font-size: 44px;
+    font-size: 32px;
   }
   .scenarioText {
     padding-top: 10px;
-    font-size: 24px;
+    padding-bottom: 20px;
+    font-size: 20px;
   }
   .inventory {
     padding: 20px;
@@ -119,7 +125,7 @@
     };
 
     function updateScenario() {
-      $('#scenarioText').text(newScenario.text);
+      $('#scenarioDesc').text(newScenario.text);
       setOptionImage(newScenario.options);
       setChecklist(newScenario.options);
     };
