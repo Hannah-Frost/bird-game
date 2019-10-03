@@ -12,10 +12,13 @@
       <div class="dayText">Day <span id="day"></span></div>
       <div class="scenarioText"><span id="scenarioText"></span></div>
       <span id="optionA"></span>
-      <input type="Radio" name="choice" id="choiceA" value="OptionA">Option A
       <span id="optionB"></span>
-      <input type="Radio" name="choice" id="choiceB" value="OptionB">Option B
-      <input type="Radio" name="choice" id="choiceC" value="nothing" checked>Nothing
+      <img src="../images/nothing.png" alt="Nothing Option"/>
+      <div>
+        <input class="tickbox" type="Radio" name="choice" id="choiceA" value="OptionA">
+        <input class="tickbox" type="Radio" name="choice" id="choiceB" value="OptionB">
+        <input class="tickbox" type="Radio" name="choice" id="choiceC" value="nothing" checked>
+      </div>
       <button onclick="window.location.href='outcome.html'">Next Day ---></button>
     </div>
     <div class="inventory">
@@ -49,11 +52,18 @@
     background-size: cover;
   }
   .summary {
-    background-color: #FFF;
+    background: rgba(255, 255, 255, 0.7);
+    border-color: white;
+    border-style: solid;
+    border-width: 4px 20px 4px 20px;
     border-radius: 10px;
     font-family: verdana;
     padding: 20px;
     margin: 20px;
+  }
+  .tickbox {
+    height: 40px;
+    width: 45px;
   }
   .dayText {
     font-size: 44px;
