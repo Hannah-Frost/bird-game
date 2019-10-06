@@ -21,5 +21,9 @@
     function updateChoice() {
       $('#outcomeText').text(choice[1]);
     };
+
+    function updateInventory() {
+      sessionStorage.setItem('items', JSON.stringify(inventory));
+    }
   });
 </script>
