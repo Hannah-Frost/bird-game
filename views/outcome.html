@@ -9,11 +9,6 @@
   </head>
   <body>
     <span id="outcomeText"></span>
-    <span id="berry"></span>
-    <span id="coin"></span>
-    <span id="feather"></span>
-    <span id="flower"></span>
-    <span id="twig"></span>
   </body>
 </html>
 
@@ -23,7 +18,6 @@
     var inventory = JSON.parse(sessionStorage.getItem('items'));
     updateChoice();
     updateInventory();
-    updateText();
 
     function updateChoice() {
       $('#outcomeText').text(choice[1]);
@@ -36,14 +30,6 @@
       } else {
         inventory[choiceAction[1]] = inventory[choiceAction[1]] + 1;
       };
-    };
-
-    function updateText() {
-      $('#berry').text(inventory.berry)
-      $('#coin').text(inventory.coin)
-      $('#feather').text(inventory.feather)
-      $('#flower').text(inventory.flower)
-      $('#twig').text(inventory.twig)
     };
 
     function saveInventory() {
