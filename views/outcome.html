@@ -8,9 +8,21 @@
     <title>Outcome</title>
   </head>
   <body>
+    <strong>Outcome:</strong>
     <span id="outcomeText"></span>
+    <div class="inventoryCard">
+      <span id="inventoryText"></span>
+    </div>
   </body>
 </html>
+
+<style>
+  .inventoryCard {
+    border-radius: 20px;
+    background: #FFF;
+    margin-top: 40px;
+  }
+</style>
 
 <script>
   $(document).ready(function() {
@@ -30,6 +42,7 @@
       } else {
         inventory[choiceAction[1]] = inventory[choiceAction[1]] + 1;
       };
+      $('#inventoryText').text(`${choiceAction[0]} ${choiceAction[1]}`);
     };
 
     function saveInventory() {
