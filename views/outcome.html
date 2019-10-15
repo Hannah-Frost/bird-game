@@ -7,20 +7,28 @@
     <script src="../lib/Scenario.js"></script>
     <title>Outcome</title>
   </head>
-  <body>
+  <body class="background-image">
     <strong>Outcome:</strong>
+    <br>
     <span id="outcomeText"></span>
     <div class="inventoryCard">
+      <strong>Inventory:</strong>
+      <br>
       <span id="inventoryText"></span>
     </div>
   </body>
 </html>
 
 <style>
+  .background-image {
+    background-image: url("../images/background.png");
+    background-size: cover;
+  }
   .inventoryCard {
     border-radius: 20px;
+    padding: 20px;
+    margin: 40px;
     background: #FFF;
-    margin-top: 40px;
   }
 </style>
 
