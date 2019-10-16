@@ -44,13 +44,15 @@
     };
 
     function updateInventory() {
-      const choiceAction = choice[0].split(' ')
-      if ( choiceAction[0] === '-' ) {
-        inventory[choiceAction[1]] = inventory[choiceAction[1]] - 1;
-      } else {
-        inventory[choiceAction[1]] = inventory[choiceAction[1]] + 1;
-      };
-      $('#inventoryText').text(`${choiceAction[0]} ${choiceAction[1]}`);
+      const choiceAction = choice[0].split(',')
+      choiceAction.forEach(function(action) {
+        if ( action.charAt(0) === '-' ) {
+          inventory[action.slice(1)] = inventory[action.slice(1)] - 1;
+        } else {
+          inventory[action.slice(1)] = inventory[action.slice(1)] + 1;
+        };
+      });
+      $('#inventoryText').text(`${choiceAction}`);
     };
 
     function saveInventory() {
