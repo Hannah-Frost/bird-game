@@ -16,6 +16,7 @@
       <br>
       <span id="inventoryText"></span>
     </div>
+    <button id="next">Okay</button>
   </body>
 </html>
 
@@ -39,6 +40,8 @@
     updateChoice();
     updateInventory();
 
+    document.getElementById("next").onclick = function() {saveItems()}
+
     function updateChoice() {
       $('#outcomeText').text(choice[1]);
     };
@@ -55,8 +58,9 @@
       $('#inventoryText').text(`${choiceAction}`);
     };
 
-    function saveInventory() {
+    function saveItems() {
       sessionStorage.setItem('items', JSON.stringify(inventory));
+      window.location.href='game.html'
     };
   });
 </script>
