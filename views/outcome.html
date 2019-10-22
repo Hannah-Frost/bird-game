@@ -60,7 +60,23 @@
 
     function saveItems() {
       sessionStorage.setItem('items', JSON.stringify(inventory));
+      checkIfGameOver();
+    };
+
+    function checkIfGameOver() {
+      if ( inventory.berry < 0 ) {
+        window.location.href='end.html'
+      } else if ( inventory.coin < 0 ){
+      window.location.href='end.html'
+      } else if ( inventory.feather < 0 ){
+        window.location.href='end.html'
+      } else if ( inventory.flower < 0 ){
+        window.location.href='end.html'
+      } else if ( inventory.twig < 0 ){
+      window.location.href='end.html'
+      } else {
       window.location.href='game.html'
+      };
     };
   });
 </script>
