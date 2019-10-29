@@ -8,8 +8,10 @@
     <title>Bird Game</title>
   </head>
   <body class="background-image">
-    <div class="summary">
+    <div class="header-bar">
       <strong class="dayText">Day <span id="day"></span></strong>
+    </div>
+    <div class="summary">
       <div class="scenarioText">
         <span id="scenarioDesc"></span>
         <br>
@@ -55,6 +57,14 @@
   .background-image {
     background-image: url("../images/background.png");
     background-size: cover;
+  }
+  .header-bar {
+    background-color: #333;
+    float: left;
+    color: #f2f2f2;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
   }
   .summary {
     background: rgba(255, 255, 255, 0.7);
