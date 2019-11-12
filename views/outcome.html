@@ -39,6 +39,7 @@
     var inventory = JSON.parse(sessionStorage.getItem('items'));
     updateChoice();
     updateInventory();
+    console.log(sessionStorage.getItem('day'));
 
     document.getElementById("next").onclick = function() {saveItems()}
 
@@ -60,6 +61,7 @@
 
     function saveItems() {
       sessionStorage.setItem('items', JSON.stringify(inventory));
+      sessionStorage.setItem('day', (parseInt(sessionStorage.getItem('day')) + 1));
       checkIfGameOver();
     };
 
