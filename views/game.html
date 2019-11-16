@@ -112,7 +112,7 @@
   $(document).ready(function() {
     var day = sessionStorage.getItem('day');
     var scenario = new Scenario();
-    var newScenario = scenario.selectEarlyScenario();
+    var newScenario = selectScenario();
     var inventory = JSON.parse(sessionStorage.getItem('items'));
     saveChoice($('input[id=choiceC]').val());
     updateDay();
@@ -125,6 +125,14 @@
 
     function updateDay() {
       $('#day').text(day)
+    };
+
+    function selectScenario() {
+      if ( day < 4 ) {
+        return scenario.selectEarlyScenario()
+      } else {
+        return scenario.selectLateScenario()
+      }
     };
 
     function updateInventory() {
